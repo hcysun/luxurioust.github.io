@@ -71,7 +71,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/09/10/sss/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/09/10/setup-octopress/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></h1>
     
     
       <p class="meta">
@@ -107,26 +107,47 @@
 <p>Before You Begin
 1 Install Git</p>
 
-<p>sudo apt-get update; sudo apt-get install git
-2 Install Ruby 1.9.3 via your OS package management or rbenv or RVM.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get update; sudo apt-get install git</span></code></pre></td></tr></table></div></figure>
 
-<p>curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &mdash;ruby
-source /home/username/.rvm/scripts/rvm
-If using package management may need to install ruby-dev
+
+<p>2 Install Ruby 1.9.3 via your OS package management or rbenv or RVM.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -L https://get.rvm.io | bash -s stable --ruby
+</span><span class='line'>source /home/username/.rvm/scripts/rvm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If using package management may need to install ruby-dev
 Check your Ruby version is at least 1.9.3 and install bundler:</p>
 
-<p>ruby &mdash;version
-sudo gem install bundler
-Initial Setup
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>sudo gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Initial Setup
 Clone the octopress repository and set it up</p>
 
-<p>git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.
-rake setup_github_pages
-This rake points our clone to the new repistory we just set up, configures your blog’s URL and sets up a master branch in the <em>deploy directory for deployment.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This rake points our clone to the new repistory we just set up, configures your blog’s URL and sets up a master branch in the <em>deploy directory for deployment.
 Totice the blog’s URL does not include the end of the .git, it should be like this username.github.io
 edit </em>config.yml and fill in your blog name and other details. There’s also some configs for twitter/G+/etc plugins that are worth configuring.</p>
 
@@ -138,14 +159,22 @@ This will generate the contents of your blog and allow you to preview it at [<a 
  Creating a GitHub Pages Blog With Octopress on Ubuntu
 Once you’re happy with the contents we can deploy your blog for the first time.</p>
 
-<p>rake deploy
-This will copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site. Being your first commit it could take 10 minutes for the blog to be available at [<a href="http://username.github.com">http://username.github.com</a>]
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site. Being your first commit it could take 10 minutes for the blog to be available at [<a href="http://username.github.com">http://username.github.com</a>]
 Don’t forget to commit your changes to the source branch:</p>
 
-<p>git add .
-git commit -m &lsquo;After install&rsquo;
-git push origin source
-Finish
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m 'After install'
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finish
 Now, you have your site running on Github with Octopress.</p>
 </div>
   
@@ -167,7 +196,7 @@ Now, you have your site running on Github with Octopress.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/09/10/sss/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a>
+        <a href="/blog/2013/09/10/setup-octopress/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a>
       </li>
     
   </ul>
