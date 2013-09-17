@@ -2,19 +2,23 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://Luxurioust.github.io/blog/2013/09/10/setup-octopress/</loc>
-        <lastmod>2013-09-17T19:41:22+08:00</lastmod>
+        <lastmod>2013-09-17T20:02:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://Luxurioust.github.io/</loc>
-        <lastmod>2013-09-17T19:41:22+08:00</lastmod>
+        <lastmod>2013-09-17T20:02:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://Luxurioust.github.io/blog/archives/</loc>
-        <lastmod>2013-09-17T19:41:22+08:00</lastmod>
+        <lastmod>2013-09-17T20:02:14+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Luxurioust.github.io/blog/categories/</loc>
+        <lastmod>2013-09-17T20:02:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://Luxurioust.github.io/about/</loc>
-        <lastmod>2013-09-16T21:26:19+08:00</lastmod>
+        <lastmod>2013-09-17T20:02:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://Luxurioust.github.io/robots.txt</loc>
