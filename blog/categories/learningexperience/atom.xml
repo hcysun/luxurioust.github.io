@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LearningExperience, | Ri Xu's Technology Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/learningexperience/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2013-09-21T20:26:18+08:00</updated>
+  <updated>2013-09-21T20:28:28+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[luxurioust]]></name>
@@ -21,10 +21,13 @@
     <content type="html"><![CDATA[<p>Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the most simple and convenient way to deliver the message to the mobile phone, especially transport web URL.
 Such <a href="http://www.mrxuri.com/,">http://www.mrxuri.com/,</a> generated for the dimensional code image URL is <a href="https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/">https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/</a></p>
 
-<p><a href="https://chart.googleapis.com/chart?">https://chart.googleapis.com/chart?</a> is a dimensional code API address.
-cht = qr indicate the type of two-dimensional code.
-chs = 220 × 220 generated two-dimensional code image size.
-choe = UTF-8 encoding of the content, the default is UTF-8.</p>
+<p><a href="https://chart.googleapis.com/chart?">https://chart.googleapis.com/chart?</a> is a dimensional code API address.</p>
+
+<p>cht = qr indicate the type of two-dimensional code.</p>
+
+<p>chs = 220 × 220 generated two-dimensional code image size.</p>
+
+<p>choe = UTF-8 encoding of the content, the default is UTF-8.</p>
 
 <p>chld = L|2 error correction levels and blank border width. Error correction level from low to high, respectively LMQH, the higher the level, the lower the error rate of the rows and columns of dimensional code is also more (Google API based on dimensional code and it will automatically select the appropriate content-length two-dimensional code ranks number) (Google API documentation in more detail). Border width can choose.</p>
 
