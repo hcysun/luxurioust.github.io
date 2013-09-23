@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Technology Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2013-09-21T20:53:51+08:00</updated>
+  <updated>2013-09-23T09:04:24+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[luxurioust]]></name>
@@ -18,8 +18,13 @@
     <link href="http://Luxurioust.github.io/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page/"/>
     <updated>2013-09-21T20:22:00+08:00</updated>
     <id>http://Luxurioust.github.io/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page</id>
-    <content type="html"><![CDATA[<p>Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the most simple and convenient way to deliver the message to the mobile phone, especially transport web URL.
-Such <a href="http://www.mrxuri.com/,">http://www.mrxuri.com/,</a> generated for the dimensional code image URL is <a href="https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/">https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/</a></p>
+    <content type="html"><![CDATA[<p>Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the most simple and convenient way to deliver the message to the mobile phone, especially transport web URL.</p>
+
+<p>Such <a href="http://www.mrxuri.com/">http://www.mrxuri.com/</a></p>
+
+<p>generated for the dimensional code image URL is</p>
+
+<p><a href="https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/">https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/</a></p>
 
 <p><a href="https://chart.googleapis.com/chart?">https://chart.googleapis.com/chart?</a> is a dimensional code API address.</p>
 
