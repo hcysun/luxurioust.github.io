@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ri Xu's Technology Blog</title>
+  <meta name="author" content="luxurioust">
+
+  
+  <meta name="description" content="Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Luxurioust.github.io">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ri Xu's Technology Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ri Xu's Technology Blog</a></h1>
+  
+    <h2>Weaving dreams  Achievements of the future</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Luxurioust.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="http://www.mrxuri.com/">Ri Xu Online</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page/">Using Google API to Add Dimensional Code for WordPress Web Page</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-21T20:22:00+08:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the most simple and convenient way to deliver the message to the mobile phone, especially transport web URL.</p>
+
+<p>Such <a href="http://www.mrxuri.com/">http://www.mrxuri.com/</a></p>
+
+<p>generated for the dimensional code image URL is</p>
+
+<p><a href="https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/">https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/</a></p>
+
+<p><a href="https://chart.googleapis.com/chart?">https://chart.googleapis.com/chart?</a> is a dimensional code API address.</p>
+
+<p>cht = qr indicate the type of two-dimensional code.</p>
+
+<p>chs = 220 × 220 generated two-dimensional code image size.</p>
+
+<p>choe = UTF-8 encoding of the content, the default is UTF-8.</p>
+
+<p>chld = L|2 error correction levels and blank border width. Error correction level from low to high, respectively LMQH, the higher the level, the lower the error rate of the rows and columns of dimensional code is also more (Google API based on dimensional code and it will automatically select the appropriate content-length two-dimensional code ranks number) (Google API documentation in more detail). Border width can choose.</p>
+
+<p>chl = <a href="http://www.mrxuri.com/">http://www.mrxuri.com/</a> contents of dimensional code.</p>
+
+<p>Add a two-dimensional code for the web method is very simple, just use the JavaScript window.location.href get the URL and add it to chl = immediately after the code is as follows:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>document.write("&lt;img src=\"https://chart.googleapis.com/chart?cht=qr&chs=220x220&choe=UTF-8&chld=L|2&chl="+encodeURI(window.location.href)+"\" width=\"220\" height=\"220\"/&gt;&lt;/img&gt;");</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want the WordPress Support only need to create a two-dimensional code text sidebar gadget and paste the code above into the can.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/10/setup-octopress/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-10T21:39:00+08:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/09/10/setup-octopress/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
+
+<p>Pages are served over HTTP, not HTTPs. That doesn’t make them inherently less secure, but, it does mean that you shouldn’t transact any sensitive information with them (like passwords or credit card numbers).</p>
+
+<p>GitHub Official Website github.org</p>
+
+<p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. To start blogging with Jekyll, you have to write your own HTML templates, CSS, Javascripts and set up your configuration. But with Octopress All of that is already taken care of. Simply clone or fork Octopress, install dependencies and the theme, and you’re set.</p>
+
+<p>Octopress Official Website octopress.org</p>
+
+<p>Before You Begin
+1 Install Git</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get update; sudo apt-get install git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2 Install Ruby 1.9.3 via your OS package management or rbenv or RVM.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -L https://get.rvm.io | bash -s stable --ruby
+</span><span class='line'>source /home/username/.rvm/scripts/rvm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If using package management may need to install ruby-dev
+Check your Ruby version is at least 1.9.3 and install bundler:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>sudo gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Initial Setup
+Clone the octopress repository and set it up</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This rake points our clone to the new repistory we just set up, configures your blog’s URL and sets up a master branch in the <em>deploy directory for deployment.
+Totice the blog’s URL does not include the end of the .git, it should be like this username.github.io
+edit </em>config.yml and fill in your blog name and other details. There’s also some configs for twitter/G+/etc plugins that are worth configuring.</p>
+
+<p>Generate and preview the blog</p>
+
+<p>rake generate
+rake preview
+This will generate the contents of your blog and allow you to preview it at [<a href="http://localhost:4000">http://localhost:4000</a>].
+ Creating a GitHub Pages Blog With Octopress on Ubuntu
+Once you’re happy with the contents we can deploy your blog for the first time.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site. Being your first commit it could take 10 minutes for the blog to be available at [<a href="http://username.github.com">http://username.github.com</a>]
+Don’t forget to commit your changes to the source branch:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m 'After install'
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finish
+Now, you have your site running on Github with Octopress.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page/">Using Google API to Add Dimensional Code for WordPress Web Page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/10/setup-octopress/">Creating a GitHub Pages Blog With Octopress on Ubuntu</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - luxurioust -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'hco321';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

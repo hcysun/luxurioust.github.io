@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: LearningExperience, | Ri Xu's Technology Blog]]></title>
+  <link href="http://Luxurioust.github.io/blog/categories/learningexperience/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2013-09-23T09:04:24+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
+  <author>
+    <name><![CDATA[luxurioust]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using Google API to add Dimensional Code for WordPress Web Page]]></title>
+    <link href="http://Luxurioust.github.io/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page/"/>
+    <updated>2013-09-21T20:22:00+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2013/09/21/using-google-api-to-add-dimensional-code-for-wordpress-web-page</id>
+    <content type="html"><![CDATA[<p>Smart phones becoming increasingly popular, website support for mobile phones is becoming more important, two-dimensional code can be said to be the most simple and convenient way to deliver the message to the mobile phone, especially transport web URL.</p>
+
+<p>Such <a href="http://www.mrxuri.com/">http://www.mrxuri.com/</a></p>
+
+<p>generated for the dimensional code image URL is</p>
+
+<p><a href="https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/">https://chart.googleapis.com/chart?cht=qr&amp;chs=220%C3%97220&amp;choe=UTF-8&amp;chld=L|2&amp;chl=http://www.mrxuri.com/</a></p>
+
+<p><a href="https://chart.googleapis.com/chart?">https://chart.googleapis.com/chart?</a> is a dimensional code API address.</p>
+
+<p>cht = qr indicate the type of two-dimensional code.</p>
+
+<p>chs = 220 × 220 generated two-dimensional code image size.</p>
+
+<p>choe = UTF-8 encoding of the content, the default is UTF-8.</p>
+
+<p>chld = L|2 error correction levels and blank border width. Error correction level from low to high, respectively LMQH, the higher the level, the lower the error rate of the rows and columns of dimensional code is also more (Google API based on dimensional code and it will automatically select the appropriate content-length two-dimensional code ranks number) (Google API documentation in more detail). Border width can choose.</p>
+
+<p>chl = <a href="http://www.mrxuri.com/">http://www.mrxuri.com/</a> contents of dimensional code.</p>
+
+<p>Add a two-dimensional code for the web method is very simple, just use the JavaScript window.location.href get the URL and add it to chl = immediately after the code is as follows:
+<code>
+document.write("&amp;lt;img src=\"https://chart.googleapis.com/chart?cht=qr&amp;chs=220x220&amp;choe=UTF-8&amp;chld=L|2&amp;chl="+encodeURI(window.location.href)+"\" width=\"220\" height=\"220\"/&gt;&amp;lt;/img&gt;");
+</code>
+If you want the WordPress Support only need to create a two-dimensional code text sidebar gadget and paste the code above into the can.</p>
+]]></content>
+  </entry>
+  
+</feed>
