@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Site | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/site/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-01-29T17:44:06+08:00</updated>
+  <updated>2014-01-29T20:26:24+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,137 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
+    <updated>2014-01-29T20:03:38+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-os-x</id>
+    <content type="html"><![CDATA[<p><span style="color: #008080;"><strong>Summary</strong></span><br />
+Install Octopress<br />
+Setup Github Pages<br />
+Add remote repository<br />
+Review git branches<br />
+Preview on development<br />
+Deploy to Github<br /></p>
+
+<p><span style="color: #008080;"><strong>Prerequisites</strong></span><br />
+Install Ruby, git<br />
+Have a github account<br />
+Basic knowledge of git and github<br />
+Confidence about the command line<br /></p>
+
+<p><span style="color: #008080;"><strong>Install Git</strong></span><br />
+Please reference <a href="http://help.github.com/mac-set-up-git/" title="GitHub Help" target="_blank">GitHub Help</a> this is relatively simple.<br /></p>
+
+<p><span style="color: #008080;"><strong>Install Ruby</strong></span><br />
+<strong>1 Install RVM(Ruby Version Manager)</strong><br />
+```
+$ bash -s stable &lt; &lt;(curl -s <a href="https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer">https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer</a>)</p>
+
+<h1>or</h1>
+
+<p>$ bash &lt; &lt;( curl -s <a href="https://rvm.beginrescueend.com/install/rvm">https://rvm.beginrescueend.com/install/rvm</a> )
+```</p>
+
+<p>Then you need to configure RVM shortcut commands, or you can not use rvm commands directly in the terminal
+<code>
+$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" ' &gt;&gt; ~/.bash_profile
+</code>
+Meaning is directly inserted into the script. Bash_profile in, run
+<code>
+$ source ~/.bash_profile
+</code>
+or restart Terminal, then you can enter the following command to verify
+<code>
+$ type rvm | head -1
+rvm is a function
+</code>
+That would prove rvm command to configure a success. You can also run
+<code>
+$ echo $ PATH
+</code>
+also to verify.<br />
+If you are using Sublime Text 2 as the editor related operations, it also needs to be configured first in the $PATH path subl as shortcut commands, as follows
+<code>
+$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/bin/subl
+</code>
+In this case, the above-described rvm configuration can of this operation command
+<code>
+$ subl ~/.bash_profile
+</code>
+You can then add the following text in the edit
+<code>
+[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm"
+</code>
+<strong>2 Install Ruby</strong><br />
+```
+rvm install 2.1.0
+rvm use 2.1.0</p>
+
+<h1>or</h1>
+
+<p>rvm &mdash;default 2.1.0</p>
+
+<h1>Verify the settings</h1>
+
+<p>ruby -v
+ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-darwin12.0]
+<code>
+Now confirm Ruby Gems, Gems is Ruby's package manager
+</code>
+$ gem -v
+2.2.1</p>
+
+<h1>If it is not the latest version, you can</h1>
+
+<p>$ gem update &mdash;system
+<code>
+Install Octopress&lt;br /&gt;
+&lt;strong&gt;1 Install Octopress&lt;/strong&gt;&lt;br /&gt;
+</code>
+git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+$ ruby &mdash;version
+<code>
+&lt;strong&gt;2 Install Plug-ins&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ gem install bundler
+$ bundle install
+<code>
+&lt;strong&gt;3 Install Octopress Theme&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ rake install
+<code>
+&lt;strong&gt;4 Modify the Configuration&lt;/strong&gt;&lt;br /&gt;
+Modify the configuration file _config.yml, modify url, title, subtitle, author, etc., plus the comments disqus, google+, twitter, Facebook, etc., all are together. Create a CNAME file in the source.&lt;br /&gt;
+&lt;strong&gt;5 Create a Repository on GitHub&lt;/strong&gt;&lt;br /&gt;
+We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at http://username.github.io and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.&lt;br /&gt;
+&lt;strong&gt;6 Local configuration GitHub Branch&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ rake setup_github_pages
+<code>
+When the command prompts you to enter Github URL, enter the address you just created git.&lt;br /&gt;
+&lt;strong&gt;7 Writing Articles&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ rake new_post[&ldquo;new article&rdquo;]
+<code>
+Generate a *.markdown file in "octopress/source _post", now you can edit the article.&lt;br /&gt;
+&lt;strong&gt;8 Generate &amp; Preview&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ rake generate
+$ rake preview
+<code>
+This will generate the contents of your blog and allow you to preview it at http://localhost:4000&lt;br /&gt;
+&lt;strong&gt;9 Git Submit&lt;/strong&gt;&lt;br /&gt;
+</code>
+$ rake deploy
+```
+<span style="color: #008080;"><strong>Finish</strong></span><br />
+Now, you have your site running on Github with Octopress.<br />
+<span style="color: #008080;"><strong>Reference</strong></sapn> <a href="http://www.mrxuri.com/2013/07/22/creating-a-github-pages-blog-with-octopress-on-ubuntu.html" title="Creating a GitHub Pages Blog With Octopress on Ubuntu" target="_blank">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>

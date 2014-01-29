@@ -7,7 +7,14 @@
 	<meta name="author" content="Ri Xu">
 
 	
-	<meta name="description" content="GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If &hellip;">
+	<meta name="description" content="Summary
+Install Octopress
+Setup Github Pages
+Add remote repository
+Review git branches
+Preview on development
+Deploy to Github Prerequisites
+Install &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -69,7 +76,7 @@
 		<a class="linkedin" href="http://www.linkedin.com/in/luxurioust" target="_blank">LinkedIn</a>
 		
 		
-		<a class="weibo" href="http://www.weibo.com/mrxuri" title="Sina Weibo" target="_blank">Weibo</a>
+		<a class="weibo" href="http://weibo.com/mrxuri" title="Sina Weibo" target="_blank">Weibo</a>
 		
 		
 		
@@ -89,6 +96,212 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-os-x.html">
+		
+			Creating a GitHub Pages Blog With Octopress on OS X</a>
+	</h2>
+	<div class="entry-content">
+		<p><span style="color: #008080;"><strong>Summary</strong></span><br />
+Install Octopress<br />
+Setup Github Pages<br />
+Add remote repository<br />
+Review git branches<br />
+Preview on development<br />
+Deploy to Github<br /></p>
+
+<p><span style="color: #008080;"><strong>Prerequisites</strong></span><br />
+Install Ruby, git<br />
+Have a github account<br />
+Basic knowledge of git and github<br />
+Confidence about the command line<br /></p>
+
+<p><span style="color: #008080;"><strong>Install Git</strong></span><br />
+Please reference <a href="http://help.github.com/mac-set-up-git/" title="GitHub Help" target="_blank">GitHub Help</a> this is relatively simple.<br /></p>
+
+<p><span style="color: #008080;"><strong>Install Ruby</strong></span><br />
+<strong>1 Install RVM(Ruby Version Manager)</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</span><span class='line'># or
+</span><span class='line'>$ bash &lt; &lt;( curl -s https://rvm.beginrescueend.com/install/rvm )</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then you need to configure RVM shortcut commands, or you can not use rvm commands directly in the terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" ' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meaning is directly inserted into the script. Bash_profile in, run</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or restart Terminal, then you can enter the following command to verify</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ type rvm | head -1
+</span><span class='line'>rvm is a function</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That would prove rvm command to configure a success. You can also run</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ echo $ PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>also to verify.<br />
+If you are using Sublime Text 2 as the editor related operations, it also needs to be configured first in the $PATH path subl as shortcut commands, as follows</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/bin/subl</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, the above-described rvm configuration can of this operation command</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ subl ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can then add the following text in the edit</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>2 Install Ruby</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 2.1.0
+</span><span class='line'>rvm use 2.1.0
+</span><span class='line'># or
+</span><span class='line'>rvm --default 2.1.0
+</span><span class='line'># Verify the settings
+</span><span class='line'>ruby -v
+</span><span class='line'>ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-darwin12.0]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now confirm Ruby Gems, Gems is Ruby&rsquo;s package manager</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem -v 
+</span><span class='line'>2.2.1
+</span><span class='line'># If it is not the latest version, you can 
+</span><span class='line'>$ gem update --system</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install Octopress<br />
+<strong>1 Install Octopress</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ ruby --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>2 Install Plug-ins</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler
+</span><span class='line'>$ bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>3 Install Octopress Theme</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4 Modify the Configuration</strong><br />
+Modify the configuration file _config.yml, modify url, title, subtitle, author, etc., plus the comments disqus, google+, twitter, Facebook, etc., all are together. Create a CNAME file in the source.<br />
+<strong>5 Create a Repository on GitHub</strong><br />
+We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.<br />
+<strong>6 Local configuration GitHub Branch</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When the command prompts you to enter Github URL, enter the address you just created git.<br />
+<strong>7 Writing Articles</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["new article"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Generate a *.markdown file in &ldquo;octopress/source _post&rdquo;, now you can edit the article.<br />
+<strong>8 Generate &amp; Preview</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate
+</span><span class='line'>$ rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will generate the contents of your blog and allow you to preview it at <a href="http://localhost:4000">http://localhost:4000</a><br />
+<strong>9 Git Submit</strong><br /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p><span style="color: #008080;"><strong>Finish</strong></span><br />
+Now, you have your site running on Github with Octopress.<br />
+<span style="color: #008080;"><strong>Reference</strong></sapn> <a href="http://www.mrxuri.com/2013/07/22/creating-a-github-pages-blog-with-octopress-on-ubuntu.html" title="Creating a GitHub Pages Blog With Octopress on Ubuntu" target="_blank">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-29T20:03:38+08:00" pubdate data-updated="true">Jan 29<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/experience/'>Experience</a>, <a class='category' href='/blog/categories/macintosh/'>Macintosh</a>, <a class='category' href='/blog/categories/site/'>Site</a>
+
+
+</div>
+	
+	<div class="comments"><a href="/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-os-x.html#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -225,15 +438,16 @@ Now, you have your site running on Github with Octopress.</p>
 		<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China.
 I focused on the program design, web development, Linux and open source software.
 In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.
-Here is my personal website.</p>
+Here is my GitHUb Page.</p>
 
 <p>Ri Xu Online: <a href="http://www.mrxuri.com" title="Ri Xu Online" target="_blank">www.mrxuri.com</a><br />
-Facebook: <a href="www.facebook.com/Luxurioust" title="Facebook" target="_blank">www.facebook.com/Luxurioust</a><br />
-Tweet: <a href="https://twitter.com/mrxuri" title="Twitter" target="_blank">@mrxuri</a><br />
-Google+: <a href="goo.gl/tF3Fpd" title="Google+" target="_blank">goo.gl/tF3Fpd</a><br />
-GitHub : <a href="https://github.com/Luxurioust" title="GitHub" target="_blank">github.com/Luxurioust</a><br />
-Weibo: <a href="http://weibo.com/mrxuri" target="_blank" title="Sina Weibo">weibo.com/mrxuri</a><br />
-Skype ID: luxurioust<br />
+Facebook: <a title="Ri Xu on Facebook" href="https://www.facebook.com/Luxurioust" target="_blank">www.facebook.com/Luxurioust</a><br/>
+Tweet: <a title="Ri Xu on Twitter" href="https://twitter.com/mrxuri" target="_blank">@mrxuri</a><br/>
+Google+: <a title="Ri Xu on Google plus" href="http://goo.gl/tF3Fpd" target="_blank">goo.gl/tF3Fpd</a><br/>
+LinkedIn: <a title="Ri Xu on LinkedIn" href="http://www.linkedin.com/in/luxurioust" target="_blank">www.linkedin.com/in/luxurioust</a><br/>
+GitHub: <a title="GitHub" href="https://github.com/Luxurioust" target="_blank">github.com/Luxurioust</a><br/>
+Sina Weibo: <a title="Sina Weibo" href="http://weibo.com/mrxuri" target="_blank">@续日_Luxurioust</a><br/>
+Skype ID: luxurioust<br/>
 E-mail: xuri.me[at]gmail.com</p>
 
 		

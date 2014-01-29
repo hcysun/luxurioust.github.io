@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Experience | Ri Xu's Blog]]></title>
-  <link href="http://Luxurioust.github.io/blog/categories/experience/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
+  <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
   <updated>2014-01-29T20:26:24+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
@@ -141,79 +141,6 @@ $ rake deploy
 <span style="color: #008080;"><strong>Finish</strong></span><br />
 Now, you have your site running on Github with Octopress.<br />
 <span style="color: #008080;"><strong>Reference</strong></sapn> <a href="http://www.mrxuri.com/2013/07/22/creating-a-github-pages-blog-with-octopress-on-ubuntu.html" title="Creating a GitHub Pages Blog With Octopress on Ubuntu" target="_blank">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
-    <link href="http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
-    <updated>2014-01-29T17:39:12+08:00</updated>
-    <id>http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
-    <content type="html"><![CDATA[<p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
-
-<p>Pages are served over HTTP, not HTTPs. That doesn’t make them inherently less secure, but, it does mean that you shouldn’t transact any sensitive information with them (like passwords or credit card numbers).</p>
-
-<p><strong>GitHub Official Website</strong> <a href="https://github.org/" target="_blank">github.org</a></p>
-
-<p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. To start blogging with Jekyll, you have to write your own HTML templates, CSS, Javascripts and set up your configuration. But with Octopress All of that is already taken care of. Simply clone or fork Octopress, install dependencies and the theme, and you’re set.</p>
-
-<p><strong>Octopress Official Website</strong> <a href="http://octopress.org">octopress.org</a></p>
-
-<p><strong>Before You Begin</strong><br />
-1 Install Git</p>
-
-<p><code>
-sudo apt-get update; sudo apt-get install git
-</code>
-2 Install Ruby 1.9.3 via your OS package management or rbenv or RVM.</p>
-
-<p><code>
-curl -L https://get.rvm.io | bash -s stable --ruby
-source /home/username/.rvm/scripts/rvm
-</code>
-If using package management may need to install ruby-dev
-Check your Ruby version is at least 1.9.3 and install bundler:</p>
-
-<p><code>
-ruby --version
-sudo gem install bundler
-</code>
-<strong>Initial Setup</strong><br />
-Clone the octopress repository and set it up</p>
-
-<p><code>
-git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-bundle install
-rake install
-</code>
-We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.
-rake setup_github_pages
-This rake points our clone to the new repistory we just set up, configures your blog’s URL and sets up a master branch in the _deploy directory for deployment.
-Totice the blog’s URL does not include the end of the .git, it should be like this username.github.io
-edit _config.yml and fill in your blog name and other details. There’s also some configs for twitter/G+/etc plugins that are worth configuring.</p>
-
-<p><strong>Generate and preview the blog</strong></p>
-
-<p><code>
-rake generate
-rake preview
-</code>
-This will generate the contents of your blog and allow you to preview it at <a href="http://localhost:4000.">http://localhost:4000.</a>
-Once you’re happy with the contents we can deploy your blog for the first time.</p>
-
-<p><code>
-rake deploy
-</code>
-This will copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site. Being your first commit it could take 10 minutes for the blog to be available at <a href="http://username.github.com">http://username.github.com</a>
-Don’t forget to commit your changes to the source branch:
-<code>
-git add .
-git commit -m 'After install'
-git push origin source
-</code>
-<strong>Finish</strong>
-Now, you have your site running on Github with Octopress.</p>
 ]]></content>
   </entry>
   
