@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: About | Ri Xu's Blog]]></title>
+  <link href="http://Luxurioust.github.io/blog/categories/about/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-01-29T15:57:35+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
+  <author>
+    <name><![CDATA[Ri Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[About]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/01/29/about/"/>
+    <updated>2014-01-29T15:14:06+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/01/29/about</id>
+    <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China.
+I focused on the program design, web development, Linux and open source software.
+In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.
+Here is my personal website.</p>
+
+<p>Ri Xu Online <a href="http://www.mrxuri.com" title="Ri Xu Online" target="_blank">www.mrxuri.com</a><br />
+Facebook: <a href="www.facebook.com/Luxurioust" title="Facebook" target="_blank">www.facebook.com/Luxurioust</a><br />
+Tweet / Weibo:  @mrxuri<br />
+Google+: <a href="goo.gl/tF3Fpd" title="Google+" target="_blank">goo.gl/tF3Fpd<a><br />
+GitHub : <a href="https://github.com/Luxurioust" title="GitHub" target="_blank">github.com/Luxurioust</a><br />
+Skype ID: luxurioust<br />
+E-mail: xuri.me[at]gmail.com</p>
+]]></content>
+  </entry>
+  
+</feed>
