@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-01-29T20:26:24+08:00</updated>
+  <updated>2014-02-02T13:04:06+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
+    <updated>2014-02-02T12:53:35+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x</id>
+    <content type="html"><![CDATA[<p><span style="color: #008080;"><strong>Wiki</strong></span>
+Beyond Compare is a file comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP directories, and archives. It is available for Windows and Linux operating systems.<br />
+Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</br />
+<span style="color: #008080;"><strong>Official Website</strong></span> <a title="Beyond Compare Official Website" href="http://www.scootersoftware.com/" target="_blank">www.scootersoftware.com</a></p>
+
+<p><span style="color: #008080;"><strong>Download Beyond Compare for Mac</strong></span><br />
+Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bcomp a.txt b.txt</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; to compare files. The following steps are based on its command line tools for.</p>
+
+<p><span style="color: #008080;"><strong>Usr in Git CLI</strong></span></br />
+After installing Beyond Compare&rsquo;s next step is to set it as the Git diff tool and merge tool. Enter the following few commands in Terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git config --global diff.tool bc3
+</span><span class='line'>$ git config --global difftool.prompt false
+</span><span class='line'>$ git config --global merge.tool bc3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These command means that when you use in Git &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git diff</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; or &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git mereg</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; command, Git will automatically call just to open a command line tool to compare files Bycompare.</p>
+
+<p><span style="color: #008080;"><strong>Use in Tower</strong></span></br />
+1 Exit Tower Tool</br />
+2 Run in a terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/Library/Application\ Support/Tower</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If there is no CompareScripts folder, use &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir CompareScripts</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; to generating a folder</br />
+3 Download <a title="Download bcomp.sh" href="http://jdon.at/3tWV" target="_blank">bcomp.sh</a> and put into CompareScripts folder</br />
+4 Use &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +x bcomp.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; ommand to give it executable permissions</br />
+5 Download <a title="Download CompareToools.plist" href="http://jdon.at/J4cR" target="_blank">CompareToools.plist</a>  to ~/Library/Application\ Support/Tower folder</br />
+6 Start Tower</p>
+
+<p><span style="color: #008080;"><strong>Use in SourceTree</strong></span></br />
+1 Open SourceTree</br />
+2 Select the &ldquo;Performance&rdquo; in the menu SourceTree</br />
+3 In the top menu bar, select &ldquo;diff&rdquo; tab</br />
+4 In the &ldquo;External Diff / Merge&rdquo;</br /></p>
+
+<ul>
+    <li>If it is &#8220;Visual Diff Tool&#8221;, select &#8220;Other&#8221;, enter &#8220;/usr/local/bin/bcomp&#8221; in &#8220;diff commend&#8221;, enter &#8220;$LOCAL $REMOTE&#8221; in the &#8220;arguments&#8221; in</li>
+    <li>If the &#8220;Merge Tool&#8221;, select &#8220;Other&#8221;, enter &#8220;/usr/local/bin/bcomp&#8221; in &#8220;Merge Commend&#8221;, enter &#8220;$LOCAL $REMOTE $BASE $MERGED&#8221; in the &#8220;arguments&#8221;.</li>
+</ul>
+
+
+<p><span style="color: #008080;"><strong> References of Article</strong></span> <a title="在 Mac OS中使用 Beyond Compare" href="http://glowface.net/2014/01/using-beyond-compare-mac-os/" target="_blank">在 Mac OS中使用 Beyond Compare</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on OS X]]></title>
