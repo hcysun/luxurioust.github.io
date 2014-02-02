@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:18:04+08:00</updated>
+  <updated>2014-02-02T13:42:34+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -27,6 +27,11 @@
 
 
 <p>&hellip; like this &hellip;</p>
+
+<!--more-->
+
+
+<p></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -130,7 +135,11 @@ Beyond Compare is a file comparison utility. Aside from comparing files, the pro
 Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</br />
 <span style="color: #008080;"><strong>Official Website</strong></span> <a title="Beyond Compare Official Website" href="http://www.scootersoftware.com/" target="_blank">www.scootersoftware.com</a></p>
 
-<p><span style="color: #008080;"><strong>Download Beyond Compare for Mac</strong></span><br />
+<!--more-->
+
+
+<p>
+<span style="color: #008080;"><strong>Download Beyond Compare for Mac</strong></span><br />
 Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal &hellip;</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -225,7 +234,11 @@ Have a github account<br />
 Basic knowledge of git and github<br />
 Confidence about the command line<br /></p>
 
-<p><span style="color: #008080;"><strong>Install Git</strong></span><br />
+<!--more-->
+
+
+<p>
+<span style="color: #008080;"><strong>Install Git</strong></span><br />
 Please reference <a href="http://help.github.com/mac-set-up-git/" title="GitHub Help" target="_blank">GitHub Help</a> this is relatively simple.<br /></p>
 
 <p><span style="color: #008080;"><strong>Install Ruby</strong></span><br />
@@ -393,7 +406,11 @@ Now, you have your site running on Github with Octopress.<br />
 
 <p><strong>Octopress Official Website</strong> <a href="http://octopress.org">octopress.org</a></p>
 
-<p><strong>Before You Begin</strong><br />
+<!--more-->
+
+
+<p>
+<strong>Before You Begin</strong><br />
 1 Install Git</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -474,8 +491,13 @@ Now, you have your site running on Github with Octopress.</p>
     <id>http://Luxurioust.github.io/blog/2013/07/22/about</id>
     <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China.
 I focused on the program design, web development, Linux and open source software.
-In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.
+In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.<br />
 Here is my GitHub Page.</p>
+
+<!--more-->
+
+
+<p></p>
 
 <p>Ri Xu Online: <a href="http://www.mrxuri.com" title="Ri Xu Online" target="_blank">www.mrxuri.com</a><br />
 Facebook: <a title="Ri Xu on Facebook" href="https://www.facebook.com/Luxurioust" target="_blank">www.facebook.com/Luxurioust</a><br/>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:18:04+08:00</updated>
+  <updated>2014-02-02T13:42:34+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -24,7 +24,12 @@
 <code>
 $ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 </code>
-&hellip; like this &hellip;
+&hellip; like this &hellip;</p>
+
+<!--more-->
+
+
+<p>
 <code>
 .
 |____extra
@@ -90,7 +95,11 @@ Beyond Compare is a file comparison utility. Aside from comparing files, the pro
 Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</br />
 <span style="color: #008080;"><strong>Official Website</strong></span> <a title="Beyond Compare Official Website" href="http://www.scootersoftware.com/" target="_blank">www.scootersoftware.com</a></p>
 
-<p><span style="color: #008080;"><strong>Download Beyond Compare for Mac</strong></span><br />
+<!--more-->
+
+
+<p>
+<span style="color: #008080;"><strong>Download Beyond Compare for Mac</strong></span><br />
 Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal &hellip;
 <code>
 $ bcomp a.txt b.txt
@@ -169,7 +178,11 @@ Have a github account<br />
 Basic knowledge of git and github<br />
 Confidence about the command line<br /></p>
 
-<p><span style="color: #008080;"><strong>Install Git</strong></span><br />
+<!--more-->
+
+
+<p>
+<span style="color: #008080;"><strong>Install Git</strong></span><br />
 Please reference <a href="http://help.github.com/mac-set-up-git/" title="GitHub Help" target="_blank">GitHub Help</a> this is relatively simple.<br /></p>
 
 <p><span style="color: #008080;"><strong>Install Ruby</strong></span><br />

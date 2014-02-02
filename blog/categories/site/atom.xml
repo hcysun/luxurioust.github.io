@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Site | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/site/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:18:04+08:00</updated>
+  <updated>2014-02-02T13:42:34+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -32,7 +32,11 @@ Have a github account<br />
 Basic knowledge of git and github<br />
 Confidence about the command line<br /></p>
 
-<p><span style="color: #008080;"><strong>Install Git</strong></span><br />
+<!--more-->
+
+
+<p>
+<span style="color: #008080;"><strong>Install Git</strong></span><br />
 Please reference <a href="http://help.github.com/mac-set-up-git/" title="GitHub Help" target="_blank">GitHub Help</a> this is relatively simple.<br /></p>
 
 <p><span style="color: #008080;"><strong>Install Ruby</strong></span><br />
@@ -159,7 +163,11 @@ Now, you have your site running on Github with Octopress.<br />
 
 <p><strong>Octopress Official Website</strong> <a href="http://octopress.org">octopress.org</a></p>
 
-<p><strong>Before You Begin</strong><br />
+<!--more-->
+
+
+<p>
+<strong>Before You Begin</strong><br />
 1 Install Git</p>
 
 <p><code>
