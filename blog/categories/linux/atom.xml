@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:13:43+08:00</updated>
+  <updated>2014-02-02T13:18:04+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
-    <link href="http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
-    <updated>2014-01-29T17:39:12+08:00</updated>
-    <id>http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
+    <link href="http://Luxurioust.github.io/blog/2013/07/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
+    <updated>2013-07-23T17:39:12+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2013/07/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
     <content type="html"><![CDATA[<p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
 
 <p>Pages are served over HTTP, not HTTPs. That doesn’t make them inherently less secure, but, it does mean that you shouldn’t transact any sensitive information with them (like passwords or credit card numbers).</p>

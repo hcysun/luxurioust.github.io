@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:13:43+08:00</updated>
+  <updated>2014-02-02T13:18:04+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -380,9 +380,9 @@ Now, you have your site running on Github with Octopress.<br />
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
-    <link href="http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
-    <updated>2014-01-29T17:39:12+08:00</updated>
-    <id>http://Luxurioust.github.io/blog/2014/01/29/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
+    <link href="http://Luxurioust.github.io/blog/2013/07/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
+    <updated>2013-07-23T17:39:12+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2013/07/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
     <content type="html"><![CDATA[<p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
 
 <p>Pages are served over HTTP, not HTTPs. That doesn’t make them inherently less secure, but, it does mean that you shouldn’t transact any sensitive information with them (like passwords or credit card numbers).</p>
@@ -468,14 +468,14 @@ Now, you have your site running on Github with Octopress.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[about]]></title>
-    <link href="http://Luxurioust.github.io/blog/2014/01/29/about.html"/>
-    <updated>2014-01-29T17:37:16+08:00</updated>
-    <id>http://Luxurioust.github.io/blog/2014/01/29/about</id>
+    <title type="html"><![CDATA[About]]></title>
+    <link href="http://Luxurioust.github.io/blog/2013/07/22/about.html"/>
+    <updated>2013-07-22T17:37:16+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2013/07/22/about</id>
     <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China.
 I focused on the program design, web development, Linux and open source software.
 In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.
-Here is my GitHUb Page.</p>
+Here is my GitHub Page.</p>
 
 <p>Ri Xu Online: <a href="http://www.mrxuri.com" title="Ri Xu Online" target="_blank">www.mrxuri.com</a><br />
 Facebook: <a title="Ri Xu on Facebook" href="https://www.facebook.com/Luxurioust" target="_blank">www.facebook.com/Luxurioust</a><br/>
