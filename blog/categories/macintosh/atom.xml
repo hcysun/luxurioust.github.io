@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:04:06+08:00</updated>
+  <updated>2014-02-02T13:13:43+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Add tree command in OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/02/add-tree-command-in-os-x.html"/>
+    <updated>2014-02-02T13:10:52+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/02/add-tree-command-in-os-x</id>
+    <content type="html"><![CDATA[<h3>Option 1</h3>
+
+<p>Not found of OS X default tree command, this command line similar to the effect of the tree
+<code>
+$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+</code>
+&hellip; like this &hellip;
+<code>
+.
+|____extra
+| |____httpd-autoindex.conf
+| |____httpd-dav.conf
+| |____httpd-default.conf
+| |____httpd-info.conf
+| |____httpd-languages.conf
+| |____httpd-manual.conf
+| |____httpd-mpm.conf
+| |____httpd-multilang-errordoc.conf
+| |____httpd-ssl.conf
+| |____httpd-userdir.conf
+| |____httpd-vhosts.conf
+|____httpd.conf
+|____magic
+|____mime.types
+|____original
+| |____extra
+| | |____httpd-autoindex.conf
+| | |____httpd-dav.conf
+| | |____httpd-default.conf
+| | |____httpd-info.conf
+| | |____httpd-languages.conf
+| | |____httpd-manual.conf
+| | |____httpd-mpm.conf
+| | |____httpd-multilang-errordoc.conf
+| | |____httpd-ssl.conf
+| | |____httpd-userdir.conf
+| | |____httpd-vhosts.conf
+| |____httpd.conf
+|____other
+| |____php5.conf
+|____users
+</code>
+Add alias to ~/.bash_profile
+<code>
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+</code></p>
+
+<h3>Option 2</h3>
+
+<p>Use Homebrew to install tree command, first you need to install Homebrew, you can reference <a href="http://www.mrxuri.com/2014/02/02/install-homebrew-on-os-x.html">Install Homebrew on OS X</a>.</p>
+
+<p><strong>Install tree</strong>
+<code>
+$ brew install tree
+</code>
+<strong>Uninstall tree</strong>
+<code>
+$ brew uninstall tree
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>

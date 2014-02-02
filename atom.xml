@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:04:06+08:00</updated>
+  <updated>2014-02-02T13:13:43+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,113 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Add tree command in OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/02/add-tree-command-in-os-x.html"/>
+    <updated>2014-02-02T13:10:52+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/02/add-tree-command-in-os-x</id>
+    <content type="html"><![CDATA[<h3>Option 1</h3>
+
+<p>Not found of OS X default tree command, this command line similar to the effect of the tree</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip; like this &hellip;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.
+</span><span class='line'>|____extra
+</span><span class='line'>| |____httpd-autoindex.conf
+</span><span class='line'>| |____httpd-dav.conf
+</span><span class='line'>| |____httpd-default.conf
+</span><span class='line'>| |____httpd-info.conf
+</span><span class='line'>| |____httpd-languages.conf
+</span><span class='line'>| |____httpd-manual.conf
+</span><span class='line'>| |____httpd-mpm.conf
+</span><span class='line'>| |____httpd-multilang-errordoc.conf
+</span><span class='line'>| |____httpd-ssl.conf
+</span><span class='line'>| |____httpd-userdir.conf
+</span><span class='line'>| |____httpd-vhosts.conf
+</span><span class='line'>|____httpd.conf
+</span><span class='line'>|____magic
+</span><span class='line'>|____mime.types
+</span><span class='line'>|____original
+</span><span class='line'>| |____extra
+</span><span class='line'>| | |____httpd-autoindex.conf
+</span><span class='line'>| | |____httpd-dav.conf
+</span><span class='line'>| | |____httpd-default.conf
+</span><span class='line'>| | |____httpd-info.conf
+</span><span class='line'>| | |____httpd-languages.conf
+</span><span class='line'>| | |____httpd-manual.conf
+</span><span class='line'>| | |____httpd-mpm.conf
+</span><span class='line'>| | |____httpd-multilang-errordoc.conf
+</span><span class='line'>| | |____httpd-ssl.conf
+</span><span class='line'>| | |____httpd-userdir.conf
+</span><span class='line'>| | |____httpd-vhosts.conf
+</span><span class='line'>| |____httpd.conf
+</span><span class='line'>|____other
+</span><span class='line'>| |____php5.conf
+</span><span class='line'>|____users</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add alias to ~/.bash_profile</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Option 2</h3>
+
+<p>Use Homebrew to install tree command, first you need to install Homebrew, you can reference <a href="http://www.mrxuri.com/2014/02/02/install-homebrew-on-os-x.html">Install Homebrew on OS X</a>.</p>
+
+<p><strong>Install tree</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install tree</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Uninstall tree</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew uninstall tree</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
