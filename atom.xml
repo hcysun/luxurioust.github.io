@@ -4,7 +4,7 @@
   <title><![CDATA[Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:42:34+08:00</updated>
+  <updated>2014-02-03T13:23:26+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x.html"/>
+    <updated>2014-02-03T13:21:10+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong>*
+Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+
+<p>Official Website <a href="http://brew.sh/">brew.sh</a>
+<strong>Install</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo su
+</span><span class='line'>$ curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C /usr/local</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Uninstall</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo brew uninstall unrar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you installed MacPorts can&rsquo;t install homebrew, you must first uninstall MacPorts</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -f uninstall installed
+</span><span class='line'>$ sudo rm -rf \
+</span><span class='line'>/opt/local \
+</span><span class='line'>/Applications/DarwinPorts \
+</span><span class='line'>/Applications/MacPorts \
+</span><span class='line'>/Library/LaunchDaemons/org.macports.* \
+</span><span class='line'>/Library/Receipts/DarwinPorts*.pkg \
+</span><span class='line'>/Library/Receipts/MacPorts*.pkg \
+</span><span class='line'>/Library/StartupItems/DarwinPortsStartup \
+</span><span class='line'>/Library/Tcl/darwinports1.0 \
+</span><span class='line'>/Library/Tcl/macports1.0 \
+</span><span class='line'>~/.macports</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Add tree command in OS X]]></title>

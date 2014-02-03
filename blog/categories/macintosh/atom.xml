@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-02T13:42:34+08:00</updated>
+  <updated>2014-02-03T13:23:26+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x.html"/>
+    <updated>2014-02-03T13:21:10+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong>*
+Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+
+<p>Official Website <a href="http://brew.sh/">brew.sh</a>
+<strong>Install</strong>
+<code>
+$ sudo su
+$ curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C /usr/local
+</code></p>
+
+<p><strong>Uninstall</strong>
+<code>
+$ sudo brew uninstall unrar
+</code></p>
+
+<p>If you installed MacPorts can&rsquo;t install homebrew, you must first uninstall MacPorts
+<code>
+$ sudo port -f uninstall installed
+$ sudo rm -rf \
+/opt/local \
+/Applications/DarwinPorts \
+/Applications/MacPorts \
+/Library/LaunchDaemons/org.macports.* \
+/Library/Receipts/DarwinPorts*.pkg \
+/Library/Receipts/MacPorts*.pkg \
+/Library/StartupItems/DarwinPortsStartup \
+/Library/Tcl/darwinports1.0 \
+/Library/Tcl/macports1.0 \
+~/.macports
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Add tree command in OS X]]></title>
