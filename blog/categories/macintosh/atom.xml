@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-03T13:29:36+08:00</updated>
+  <updated>2014-02-04T19:19:25+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -18,8 +18,9 @@
     <link href="http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x.html"/>
     <updated>2014-02-03T13:21:10+08:00</updated>
     <id>http://Luxurioust.github.io/blog/2014/02/03/install-homebrew-on-os-x</id>
-    <content type="html"><![CDATA[<p><strong>Wiki</strong>
-Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
 
 <p>Official Website <a href="http://brew.sh/">brew.sh</a></p>
 
