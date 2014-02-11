@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-02-04T19:19:25+08:00</updated>
+  <updated>2014-02-11T12:56:55+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -12,6 +12,312 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Useful .htaccess Tips &amp; Tricks]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/11/useful-htaccess-tips-and-tricks.html"/>
+    <updated>2014-02-11T12:49:24+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/11/useful-htaccess-tips-and-tricks</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Apache web servers has a great way to manipulate information using .htaccess files. .htaccess (hypertext access) is the default name of a directory-level configuration file that allows for decentralized management of web server configuration. The .htaccess file is placed inside the web tree, and is able to override a subset of the server’s global configuration; the extent of this subset is defined by the web server administrator. The original purpose of .htaccess was to allow per-directory access control (e.g. requiring a password to access the content), hence the name. Nowadays .htaccess can override many other configuration settings, mostly related to content control, e.g. content type and character set, CGI handlers, etc.</p>
+
+<p>Following are few very useful htaccess tricks.</p>
+
+<!--more-->
+
+
+<p>
+<strong>Custom Directory Index Files</strong></p>
+
+<p><code>
+DirectoryIndex index.html index.php index.htm
+</code>
+You can change a default index file of directory by using above snippet in your htaccess file. If a user request /foo/, Apache will serve up /foo/index.html, or whatever file you specify.</p>
+
+<p><strong>Custom Error Pages</strong></p>
+
+<p><code>
+ErrorDocument 404 errors/404.html
+</code>
+You may want to redirect your users to an error page is any of the http errors like 404 occurs. You can use above snippet in htaccess file to map 404 error to error page errors/404.html. Also you may want to write a common page for all the http errors as follows:</p>
+
+<p><code>
+ErrorDocument 404 /psych/cgi-bin/error/error?404
+</code>
+<strong>Control access at files &amp; directory level</strong></p>
+
+<p>.htaccess is most often used to restrict or deny access to individual files and folders. A typical example would be an “includes” folder. Your site’s pages can call these included scripts all they like, but you don’t want users accessing these files directly, over the web. In that case you would drop an .htaccess file in the includes folder with content something like this.</p>
+
+<p>```</p>
+
+<h1>no one gets in here!</h1>
+
+<p>deny from all
+```
+which would deny ALL direct access to ANY files in that folder. You can be more specific with your conditions, for instance limiting access to a particular IP range, here’s a handy top-level rule for a local test server.</p>
+
+<p>```</p>
+
+<h1>no nasty crackers in here!</h1>
+
+<p>order deny,allow
+deny from all
+allow from 192.168.0.0/24</p>
+
+<h1>this would do the same thing..</h1>
+
+<h1>allow from 192.168.0</h1>
+
+<p>```
+Generally these sorts of requests would bounce off your firewall anyway, but on a live server they become useful for filtering out undesirable IP blocks, known risks, lots of things.</p>
+
+<p>Sometimes, you will only want to ban one IP, perhaps some persistent robot that doesn’t play by the rules.</p>
+
+<p>```</p>
+
+<h1>someone else giving the ruskies a bad name..</h1>
+
+<p>order allow,deny
+deny from 83.222.23.219
+allow from all
+```
+<strong>Modifying the Environment Variable</strong></p>
+
+<p>Environment variables contain information used by server-side includes and CGI. Set / Unset environment variables using SetEnv and UnSetEnv.</p>
+
+<p>```
+SetEnv SITE_WEBMASTER &ldquo;Jack Sprat&rdquo;
+SetEnv SITE_WEBMASTER_URI <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#74;&#97;&#x63;&#107;&#46;&#83;&#x70;&#x72;&#97;&#116;&#64;&#x63;&#x68;&#97;&#x72;&#x61;&#99;&#x74;&#x65;&#114;&#111;&#x6c;&#x6f;&#x67;&#x79;&#x2e;&#99;&#111;&#x6d;">&#74;&#x61;&#x63;&#107;&#x2e;&#x53;&#112;&#x72;&#97;&#x74;&#x40;&#x63;&#104;&#x61;&#114;&#97;&#99;&#x74;&#101;&#x72;&#111;&#108;&#x6f;&#x67;&#x79;&#46;&#99;&#111;&#x6d;</a></p>
+
+<p>UnSetEnv REMOTE_ADDR
+```
+<strong>301 Redirect using htaccess</strong></p>
+
+<p>If you want to redirect from an old document to new:</p>
+
+<p><code>
+Redirect 301 /old/file.html http://yourdomain.com/new/file.html
+</code>
+Use following for redirecting Entire Directory.</p>
+
+<p><code>
+RedirectMatch 301 /blog(.*) http://yourdomain.com/$1
+</code>
+<strong>Implementing a Caching Scheme with .htaccess</strong></p>
+
+<p>Cache the static files and improve your website’s performance. (read this article: PHP, CSS, JS Compression for full implementation)</p>
+
+<p>```</p>
+
+<h1>year</h1>
+
+<p><FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$">
+Header set Cache-Control &ldquo;public&rdquo;
+Header set Expires &ldquo;Thu, 15 Apr 2010 20:00:00 GMT&rdquo;
+Header unset Last-Modified
+</FilesMatch></p>
+
+<h1>2 hours</h1>
+
+<p><FilesMatch "\.(html|htm|xml|txt|xsl)$">
+Header set Cache-Control &ldquo;max-age=7200, must-revalidate&rdquo;
+</FilesMatch>
+<FilesMatch "\.(js|css)$">
+SetOutputFilter DEFLATE
+Header set Expires &ldquo;Thu, 15 Apr 2010 20:00:00 GMT&rdquo;
+</FilesMatch>
+```
+<strong>Compress output using GZIP</strong></p>
+
+<p>Add following snippet into your htaccess file and compress all the css, js, html files with GZip compression.</p>
+
+<p>```
+<IfModule mod_gzip.c></p>
+
+<pre><code>mod_gzip_on       Yes
+mod_gzip_dechunk  Yes
+mod_gzip_item_include file      \.(html?|txt|css|js|php|pl)$
+mod_gzip_item_include handler   ^cgi-script$
+mod_gzip_item_include mime      ^text/.*
+mod_gzip_item_include mime      ^application/x-javascript.*
+mod_gzip_item_exclude mime      ^image/.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</code></pre>
+
+<p></IfModule>
+<code>
+Above code works only if mod_gzip module is enabled in your webserver. You may want to add following snippet if your webserver provides mod_deflate support.
+</code>
+<Location></p>
+
+<pre><code>SetOutputFilter DEFLATE
+  SetEnvIfNoCase Request_URI  \
+    \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI  \
+    \.(?:exe|t?gz|zip|gz2|sit|rar)$ no-gzip dont-vary
+</code></pre>
+
+<p></Location>
+<code>
+If your webserver does not support mod_deflate then you may want to use following snippet.
+</code>
+<FilesMatch "\.(txt|html|htm|php)"></p>
+
+<pre><code>php_value output_handler ob_gzhandler
+</code></pre>
+
+<p></FilesMatch>
+```
+Read this articles for more detail: Compressing PHP, CSS, JavaScript(JS).</p>
+
+<p><strong>Redirect browser to https (ssl)</strong></p>
+
+<p>Add following snippet to your htaccess and redirect entire website to https.
+<code>
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+</code>
+<strong>Rewrite URLs using htacccess</strong></p>
+
+<p>Rewriting product.php?id=12 to product-12.html
+<code>
+RewriteEngine on
+RewriteRule ^product-([0-9]+)\.html$ product.php?id=$1
+</code>
+Rewriting product.php?id=12 to product/ipod-nano/12.html
+<code>
+RewriteEngine on
+RewriteRule ^product/([a-zA-Z0-9_-]+)/([0-9]+)\.html$ product.php?id=$2
+</code>
+Redirecting non www URL to www URL
+<code>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^viralpatel\.net$
+RewriteRule (.*) http://www.viralpatel.net/$1 [R=301,L]
+</code>
+Rewriting yoursite.com/user.php?username=xyz to yoursite.com/xyz
+<code>
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_-]+)$ user.php?username=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ user.php?username=$1
+</code>
+Redirecting the domain to a new subfolder of inside public_html
+<code>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^test\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.test\.com$
+RewriteCond %{REQUEST_URI} !^/new/
+RewriteRule (.*) /new/$1
+</code>
+<strong>Prevent Directory Listing</strong></p>
+
+<p>Add any of the following snippet to avoid directory listing.
+<code>
+Options -Indexes
+</code>
+or
+<code>
+IndexIgnore *
+</code>
+Read this article on more details on Denying/Allowing directory listing.</p>
+
+<p><strong>Adding new MIME types</strong></p>
+
+<p>The type of file depends on the filename extension. Unrecognized file extensions are treated as text data, and corrupted on download.
+<code>
+AddType application/x-endnote-connection enz
+AddType application/x-endnote-filter enf
+AddType application/x-spss-savefile sav
+</code>
+<strong>Deny access to static file data</strong></p>
+
+<p>Denies any request for static files (images, css, etc) if referrer is not local site or empty.
+<code>
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{REQUEST_URI} !^/(wp-login.php|wp-admin/|wp-content/plugins/|wp-includes/).* [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.askapache.com.*$ [NC]
+RewriteRule \.(ico|pdf|flv|jpg|jpeg|mp3|mpg|mp4|mov|wav|wmv|png|gif|swf|css|js)$ - [F,NS,L]
+</code>
+<strong>Specify Upload file limit for PHP in htaccess</strong></p>
+
+<p><code>
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value max_execution_time 200
+php_value max_input_time 200
+</code>
+In the above .htaccess file, uploading capability is increased by the four parameter first one is maximum file size for uploading, second one is maximum size of the post data , third one is maximum time in seconds a script is allowed to run before it is terminated by the parser and last one is maximum time in seconds a script is allowed to parse input data such as like file uploads, POST and GET data.</p>
+
+<p><strong>Disallow Script Execution</strong></p>
+
+<p><code>
+Options -ExecCGI
+AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+</code>
+<strong>Change Charset and Language headers</strong></p>
+
+<p><code>
+AddDefaultCharset UTF-8
+DefaultLanguage en-US
+</code>
+<strong>Set Timezone of the Server (GMT)</strong></p>
+
+<p><code>
+SetEnv TZ America/Indianapolis
+</code>
+<strong>Force &ldquo;File Save As&rdquo; Prompt</strong></p>
+
+<p><code>
+AddType application/octet-stream .avi .mpg .mov .pdf .xls .mp4
+</code>
+<strong>Protecting a single file</strong></p>
+
+<p>Normally .htaccess applies to the entire directory. With the directive you can restrict it to specific files:
+<code>
+&lt;Files quiz.html&gt;
+order deny,allow
+deny from all
+AuthType Basic
+AuthName "Characterology Student Authcate"
+AuthLDAP on
+AuthLDAPServer ldap://directory.characterology.com/
+AuthLDAPBase "ou=Student, o=Characterology University, c=au"
+require valid-user
+satisfy any
+&lt;/Files&gt;
+</code>
+<strong>Set Cookie using htaccess</strong></p>
+
+<p>Set Cookie with environment variable
+<code>
+Header set Set-Cookie "language=%{lang}e; path=/;" env=lang
+</code>
+Set Cookie based on Request. This code sends the Set-Cookie header to create a cookie on the client with the value of a matching item in 2nd parentheses.
+<code>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.*)(de|es|fr|it|ja|ru|en)/$ - [co=lang:$2:.yourserver.com:7200:/]
+</code>
+<strong>Send Custom Headers</strong></p>
+
+<p><code>
+Header set P3P "policyref=\"http://www.askapache.com/w3c/p3p.xml\""
+Header set X-Pingback "http://www.askapache.com/xmlrpc.php"
+Header set Content-Language "en-US"
+Header set Vary "Accept-Encoding"
+</code></p>
+
+<p><strong>Blocking request based on User-Agent Header</strong></p>
+
+<p><code>
+SetEnvIfNoCase ^User-Agent$ .*(craftbot|download|extract|stripper|sucker|ninja|clshttp|webspider|leacher|collector|grabber|webpictures) HTTP_SAFE_BADBOT
+SetEnvIfNoCase ^User-Agent$ .*(libwww-perl|aesop_com_spiderman) HTTP_SAFE_BADBOT
+Deny from env=HTTP_SAFE_BADBOT
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
