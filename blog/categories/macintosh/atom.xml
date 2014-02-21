@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
+  <link href="http://yoursite.com/blog/categories/macintosh/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2014-02-21T21:01:12+08:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Ri Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x.html"/>
+    <updated>2014-02-04T20:42:31+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+
+<p><strong>Official Website</strong> <a href="http://brew.sh/">brew.sh</a></p>
+
+<!-- more -->
+
+
+<p><strong>Install</strong>
+<code>
+$ sudo su
+$ curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C /usr/local
+</code>
+<strong>Uninstall</strong>
+<code>
+$ sudo brew uninstall unrar
+</code>
+If you installed MacPorts can’t install homebrew, you must first uninstall MacPorts
+<code>
+$ sudo port -f uninstall installed
+$ sudo rm -rf \
+/opt/local \
+/Applications/DarwinPorts \
+/Applications/MacPorts \
+/Library/LaunchDaemons/org.macports.* \
+/Library/Receipts/DarwinPorts*.pkg \
+/Library/Receipts/MacPorts*.pkg \
+/Library/StartupItems/DarwinPortsStartup \
+/Library/Tcl/darwinports1.0 \
+/Library/Tcl/macports1.0 \
+~/.macports
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add Tree Command in OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x.html"/>
+    <updated>2014-02-03T20:38:12+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x</id>
+    <content type="html"><![CDATA[<h3>Option 1</h3>
+
+<p>Not found of OS X default tree command, this command line similar to the effect of the tree
+<code>
+$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+</code>
+… like this …</p>
+
+<!-- more -->
+
+
+<p><code>
+.
+|____extra
+| |____httpd-autoindex.conf
+| |____httpd-dav.conf
+| |____httpd-default.conf
+| |____httpd-info.conf
+| |____httpd-languages.conf
+| |____httpd-manual.conf
+| |____httpd-mpm.conf
+| |____httpd-multilang-errordoc.conf
+| |____httpd-ssl.conf
+| |____httpd-userdir.conf
+| |____httpd-vhosts.conf
+|____httpd.conf
+|____magic
+|____mime.types
+|____original
+| |____extra
+| | |____httpd-autoindex.conf
+| | |____httpd-dav.conf
+| | |____httpd-default.conf
+| | |____httpd-info.conf
+| | |____httpd-languages.conf
+| | |____httpd-manual.conf
+| | |____httpd-mpm.conf
+| | |____httpd-multilang-errordoc.conf
+| | |____httpd-ssl.conf
+| | |____httpd-userdir.conf
+| | |____httpd-vhosts.conf
+| |____httpd.conf
+|____other
+| |____php5.conf
+|____users
+</code>
+Add alias to ~/.bash_profile</p>
+
+<p><code>
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+</code></p>
+
+<h3>Option 2</h3>
+
+<p>Use Homebrew to install tree command, first you need to install Homebrew, you can reference Install Homebrew on OS X.</p>
+
+<p><strong>Install tree</strong>
+<code>
+$ brew install tree
+</code>
+<strong>Uninstall tree</strong></p>
+
+<p><code>
+$ brew uninstall tree
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
+    <updated>2014-02-02T20:22:19+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Beyond Compare is a file comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP directories, and archives. It is available for Windows and Linux operating systems.</p>
+
+<p>Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</p>
+
+<p><strong>Official Website</strong> <a href="http://www.scootersoftware.com/">www.scootersoftware.com</a></p>
+
+<!-- more -->
+
+
+<p><strong>Download Beyond Compare for Mac</strong></p>
+
+<p>Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal …</p>
+
+<p><code>
+$ bcomp a.txt b.txt
+</code></p>
+
+<p>… to compare files. The following steps are based on its command line tools for.</p>
+
+<p><strong>Use in Git CLI</strong>
+After installing Beyond Compare’s next step is to set it as the Git diff tool and merge tool. Enter the following few commands in Terminal</p>
+
+<p><code>
+$ git config --global diff.tool bc3
+$ git config --global difftool.prompt false
+$ git config --global merge.tool bc3
+</code>
+These command means that when you use in Git …
+<code>
+$ git diff
+</code>
+… or …
+<code>
+$ git mereg
+</code>
+… command, Git will automatically call just to open a command line tool to compare files Bycompare.</p>
+
+<p><strong>Use in Tower</strong></p>
+
+<p>1 Exit Tower Tool</p>
+
+<p>2 Run in a terminal</p>
+
+<p><code>
+$ cd ~/Library/Application\ Support/Tower
+</code>
+If there is no CompareScripts folder, use …
+<code>
+$ mkdir CompareScripts
+</code>
+… to generating a folder</p>
+
+<p>3 Download <a href="http://jdon.at/3tWV">bcomp.sh</a> and put into CompareScripts folder</p>
+
+<p>4 Use …
+<code>
+$ chmod +x bcomp.sh
+</code>
+… ommand to give it executable permissions</p>
+
+<p>5 Download <a href="http://jdon.at/J4cR">CompareToools.plist</a>  to ~/Library/Application\ Support/Tower folder</p>
+
+<p><strong>6 Start Tower</strong></p>
+
+<p>Use in SourceTree</p>
+
+<p>1 Open SourceTree</p>
+
+<p>2 Select the &ldquo;Performance&rdquo; in the menu SourceTree</p>
+
+<p>3 In the top menu bar, select &ldquo;diff&rdquo; tab</p>
+
+<p>4 In the &ldquo;External Diff / Merge&rdquo;</p>
+
+<p>If it is &ldquo;Visual Diff Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;diff commend&rdquo;, enter &ldquo;$LOCAL $REMOTE&rdquo; in the &ldquo;arguments&rdquo; in</p>
+
+<p>If the &ldquo;Merge Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;Merge Commend&rdquo;, enter &ldquo;$LOCAL $REMOTE $BASE $MERGED&rdquo; in the &ldquo;arguments&rdquo;.</p>
+
+<p><strong>References of Article</strong> <a href="http://glowface.net/2014/01/using-beyond-compare-mac-os/">在 Mac OS中使用 Beyond Compare</a></p>
+]]></content>
+  </entry>
+  
+</feed>

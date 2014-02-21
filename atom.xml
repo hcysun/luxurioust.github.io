@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Ri Xu's Blog]]></title>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2014-02-21T21:01:12+08:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Ri Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Useful .htaccess Tips &amp; Tricks]]></title>
+    <link href="http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks.html"/>
+    <updated>2014-02-21T20:47:41+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Apache web servers has a great way to manipulate information using .htaccess files. .htaccess (hypertext access) is the default name of a directory-level configuration file that allows for decentralized management of web server configuration. The .htaccess file is placed inside the web tree, and is able to override a subset of the server’s global configuration; the extent of this subset is defined by the web server administrator. The original purpose of .htaccess was to allow per-directory access control (e.g. requiring a password to access the content), hence the name. Nowadays .htaccess can override many other configuration settings, mostly related to content control, e.g. content type and character set, CGI handlers, etc.</p>
+
+<p>Following are few very useful htaccess tricks.</p>
+
+<!-- more -->
+
+
+<p><strong>Custom Directory Index Files</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>DirectoryIndex index.html index.php index.htm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can change a default index file of directory by using above snippet in your htaccess file. If a user request /foo/, Apache will serve up /foo/index.html, or whatever file you specify.</p>
+
+<p><strong>Custom Error Pages</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorDocument 404 errors/404.html</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You may want to redirect your users to an error page is any of the http errors like 404 occurs. You can use above snippet in htaccess file to map 404 error to error page errors/404.html. Also you may want to write a common page for all the http errors as follows:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ErrorDocument 404 /psych/cgi-bin/error/error?404</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Control access at files &amp; directory level</strong></p>
+
+<p>.htaccess is most often used to restrict or deny access to individual files and folders. A typical example would be an “includes” folder. Your site’s pages can call these included scripts all they like, but you don’t want users accessing these files directly, over the web. In that case you would drop an .htaccess file in the includes folder with content something like this.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># no one gets in here!
+</span><span class='line'>deny from all</span></code></pre></td></tr></table></div></figure>
+
+
+<p>which would deny ALL direct access to ANY files in that folder. You can be more specific with your conditions, for instance limiting access to a particular IP range, here’s a handy top-level rule for a local test server.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># no nasty crackers in here!
+</span><span class='line'>order deny,allow
+</span><span class='line'>deny from all
+</span><span class='line'>allow from 192.168.0.0/24
+</span><span class='line'># this would do the same thing..
+</span><span class='line'>#allow from 192.168.0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Generally these sorts of requests would bounce off your firewall anyway, but on a live server they become useful for filtering out undesirable IP blocks, known risks, lots of things.</p>
+
+<p>Sometimes, you will only want to ban one IP, perhaps some persistent robot that doesn’t play by the rules.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># someone else giving the ruskies a bad name..
+</span><span class='line'>order allow,deny
+</span><span class='line'>deny from 83.222.23.219
+</span><span class='line'>allow from all</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Modifying the Environment Variable</strong></p>
+
+<p>Environment variables contain information used by server-side includes and CGI. Set / Unset environment variables using SetEnv and UnSetEnv.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SetEnv SITE_WEBMASTER "Jack Sprat"
+</span><span class='line'>SetEnv SITE_WEBMASTER_URI mailto:Jack.Sprat@characterology.com
+</span><span class='line'>UnSetEnv REMOTE_ADDR</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>301 Redirect using htaccess</strong></p>
+
+<p>If you want to redirect from an old document to new:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Redirect 301 /old/file.html http://yourdomain.com/new/file.html</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Use following for redirecting Entire Directory.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RedirectMatch 301 /blog(.*) http://yourdomain.com/$1</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Implementing a Caching Scheme with .htaccess</strong></p>
+
+<p>Cache the static files and improve your website’s performance. (read this article: PHP, CSS, JS Compression for full implementation)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># year
+</span><span class='line'>&lt;FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$"&gt;
+</span><span class='line'>Header set Cache-Control "public"
+</span><span class='line'>Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+</span><span class='line'>Header unset Last-Modified
+</span><span class='line'>&lt;/FilesMatch&gt;
+</span><span class='line'>#2 hours
+</span><span class='line'>&lt;FilesMatch "\.(html|htm|xml|txt|xsl)$"&gt;
+</span><span class='line'>Header set Cache-Control "max-age=7200, must-revalidate"
+</span><span class='line'>&lt;/FilesMatch&gt;
+</span><span class='line'>&lt;FilesMatch "\.(js|css)$"&gt;
+</span><span class='line'>SetOutputFilter DEFLATE
+</span><span class='line'>Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+</span><span class='line'>&lt;/FilesMatch&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Compress output using GZIP</strong></p>
+
+<p>Add following snippet into your htaccess file and compress all the css, js, html files with GZip compression.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_gzip.c&gt;
+</span><span class='line'>    mod_gzip_on       Yes
+</span><span class='line'>    mod_gzip_dechunk  Yes
+</span><span class='line'>    mod_gzip_item_include file      \.(html?|txt|css|js|php|pl)$
+</span><span class='line'>    mod_gzip_item_include handler   ^cgi-script$
+</span><span class='line'>    mod_gzip_item_include mime      ^text/.*
+</span><span class='line'>    mod_gzip_item_include mime      ^application/x-javascript.*
+</span><span class='line'>    mod_gzip_item_exclude mime      ^image/.*
+</span><span class='line'>    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Above code works only if mod_gzip module is enabled in your webserver. You may want to add following snippet if your webserver provides mod_deflate support.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Location&gt;
+</span><span class='line'>    SetOutputFilter DEFLATE
+</span><span class='line'>      SetEnvIfNoCase Request_URI  \
+</span><span class='line'>        \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+</span><span class='line'>    SetEnvIfNoCase Request_URI  \
+</span><span class='line'>        \.(?:exe|t?gz|zip|gz2|sit|rar)$ no-gzip dont-vary
+</span><span class='line'>&lt;/Location&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If your webserver does not support mod_deflate then you may want to use following snippet.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;FilesMatch "\.(txt|html|htm|php)"&gt;
+</span><span class='line'>    php_value output_handler ob_gzhandler
+</span><span class='line'>&lt;/FilesMatch&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Read this articles for more detail: Compressing PHP, CSS, JavaScript(JS).</p>
+
+<p><strong>Redirect browser to https (ssl)</strong></p>
+
+<p>Add following snippet to your htaccess and redirect entire website to https.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine On
+</span><span class='line'>RewriteCond %{HTTPS} !on
+</span><span class='line'>RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Rewrite URLs using htacccess</strong></p>
+
+<p>Rewriting product.php?id=12 to product-12.html</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteRule ^product-([0-9]+)\.html$ product.php?id=$1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rewriting product.php?id=12 to product/ipod-nano/12.html</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine on
+</span><span class='line'>RewriteRule ^product/([a-zA-Z0-9_-]+)/([0-9]+)\.html$ product.php?id=$2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Redirecting non www URL to www URL</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine On
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^viralpatel\.net$
+</span><span class='line'>RewriteRule (.*) http://www.viralpatel.net/$1 [R=301,L]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rewriting yoursite.com/user.php?username=xyz to yoursite.com/xyz</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine On
+</span><span class='line'>RewriteRule ^([a-zA-Z0-9_-]+)$ user.php?username=$1
+</span><span class='line'>RewriteRule ^([a-zA-Z0-9_-]+)/$ user.php?username=$1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Redirecting the domain to a new subfolder of inside public_html</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine On
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^test\.com$ [OR]
+</span><span class='line'>RewriteCond %{HTTP_HOST} ^www\.test\.com$
+</span><span class='line'>RewriteCond %{REQUEST_URI} !^/new/
+</span><span class='line'>RewriteRule (.*) /new/$1</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Prevent Directory Listing</strong></p>
+
+<p>Add any of the following snippet to avoid directory listing.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Options -Indexes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>IndexIgnore *</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Read this article on more details on Denying/Allowing directory listing.</p>
+
+<p><strong>Adding new MIME types</strong></p>
+
+<p>The type of file depends on the filename extension. Unrecognized file extensions are treated as text data, and corrupted on download.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>AddType application/x-endnote-connection enz
+</span><span class='line'>AddType application/x-endnote-filter enf
+</span><span class='line'>AddType application/x-spss-savefile sav</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Deny access to static file data</strong></p>
+
+<p>Denies any request for static files (images, css, etc) if referrer is not local site or empty.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteCond %{HTTP_REFERER} !^$
+</span><span class='line'>RewriteCond %{REQUEST_URI} !^/(wp-login.php|wp-admin/|wp-content/plugins/|wp-includes/).* [NC]
+</span><span class='line'>RewriteCond %{HTTP_REFERER} !^http://www.askapache.com.*$ [NC]
+</span><span class='line'>RewriteRule \.(ico|pdf|flv|jpg|jpeg|mp3|mpg|mp4|mov|wav|wmv|png|gif|swf|css|js)$ - [F,NS,L]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Specify Upload file limit for PHP in htaccess</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>php_value upload_max_filesize 20M
+</span><span class='line'>php_value post_max_size 20M
+</span><span class='line'>php_value max_execution_time 200
+</span><span class='line'>php_value max_input_time 200</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the above .htaccess file, uploading capability is increased by the four parameter first one is maximum file size for uploading, second one is maximum size of the post data , third one is maximum time in seconds a script is allowed to run before it is terminated by the parser and last one is maximum time in seconds a script is allowed to parse input data such as like file uploads, POST and GET data.</p>
+
+<p><strong>Disallow Script Execution</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Options -ExecCGI
+</span><span class='line'>AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Change Charset and Language headers</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>AddDefaultCharset UTF-8
+</span><span class='line'>DefaultLanguage en-US</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Set Timezone of the Server (GMT)</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SetEnv TZ America/Indianapolis</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Force “File Save As” Prompt</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>AddType application/octet-stream .avi .mpg .mov .pdf .xls .mp4</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Protecting a single file</strong></p>
+
+<p>Normally .htaccess applies to the entire directory. With the directive you can restrict it to specific files:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Files quiz.html&gt;
+</span><span class='line'>order deny,allow
+</span><span class='line'>deny from all
+</span><span class='line'>AuthType Basic
+</span><span class='line'>AuthName "Characterology Student Authcate"
+</span><span class='line'>AuthLDAP on
+</span><span class='line'>AuthLDAPServer ldap://directory.characterology.com/
+</span><span class='line'>AuthLDAPBase "ou=Student, o=Characterology University, c=au"
+</span><span class='line'>require valid-user
+</span><span class='line'>satisfy any
+</span><span class='line'>&lt;/Files&gt; </span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Set Cookie using htaccess</strong></p>
+
+<p>Set Cookie with environment variable</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Header set Set-Cookie "language=%{lang}e; path=/;" env=lang</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Set Cookie based on Request. This code sends the Set-Cookie header to create a cookie on the client with the value of a matching item in 2nd parentheses.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>RewriteEngine On
+</span><span class='line'>RewriteBase /
+</span><span class='line'>RewriteRule ^(.*)(de|es|fr|it|ja|ru|en)/$ - [co=lang:$2:.yourserver.com:7200:/]</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Send Custom Headers</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Header set P3P "policyref=\"http://www.askapache.com/w3c/p3p.xml\""
+</span><span class='line'>Header set X-Pingback "http://www.askapache.com/xmlrpc.php"
+</span><span class='line'>Header set Content-Language "en-US"
+</span><span class='line'>Header set Vary "Accept-Encoding"</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Blocking request based on User-Agent Header</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SetEnvIfNoCase ^User-Agent$ .*(craftbot|download|extract|stripper|sucker|ninja|clshttp|webspider|leacher|collector|grabber|webpictures) HTTP_SAFE_BADBOT
+</span><span class='line'>SetEnvIfNoCase ^User-Agent$ .*(libwww-perl|aesop_com_spiderman) HTTP_SAFE_BADBOT
+</span><span class='line'>Deny from env=HTTP_SAFE_BADBOT</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x.html"/>
+    <updated>2014-02-04T20:42:31+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+
+<p><strong>Official Website</strong> <a href="http://brew.sh/">brew.sh</a></p>
+
+<!-- more -->
+
+
+<p><strong>Install</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo su
+</span><span class='line'>$ curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C /usr/local</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Uninstall</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo brew uninstall unrar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you installed MacPorts can’t install homebrew, you must first uninstall MacPorts</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo port -f uninstall installed
+</span><span class='line'>$ sudo rm -rf \
+</span><span class='line'>/opt/local \
+</span><span class='line'>/Applications/DarwinPorts \
+</span><span class='line'>/Applications/MacPorts \
+</span><span class='line'>/Library/LaunchDaemons/org.macports.* \
+</span><span class='line'>/Library/Receipts/DarwinPorts*.pkg \
+</span><span class='line'>/Library/Receipts/MacPorts*.pkg \
+</span><span class='line'>/Library/StartupItems/DarwinPortsStartup \
+</span><span class='line'>/Library/Tcl/darwinports1.0 \
+</span><span class='line'>/Library/Tcl/macports1.0 \
+</span><span class='line'>~/.macports</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add Tree Command in OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x.html"/>
+    <updated>2014-02-03T20:38:12+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x</id>
+    <content type="html"><![CDATA[<h3>Option 1</h3>
+
+<p>Not found of OS X default tree command, this command line similar to the effect of the tree</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… like this …</p>
+
+<!-- more -->
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>.
+</span><span class='line'>|____extra
+</span><span class='line'>| |____httpd-autoindex.conf
+</span><span class='line'>| |____httpd-dav.conf
+</span><span class='line'>| |____httpd-default.conf
+</span><span class='line'>| |____httpd-info.conf
+</span><span class='line'>| |____httpd-languages.conf
+</span><span class='line'>| |____httpd-manual.conf
+</span><span class='line'>| |____httpd-mpm.conf
+</span><span class='line'>| |____httpd-multilang-errordoc.conf
+</span><span class='line'>| |____httpd-ssl.conf
+</span><span class='line'>| |____httpd-userdir.conf
+</span><span class='line'>| |____httpd-vhosts.conf
+</span><span class='line'>|____httpd.conf
+</span><span class='line'>|____magic
+</span><span class='line'>|____mime.types
+</span><span class='line'>|____original
+</span><span class='line'>| |____extra
+</span><span class='line'>| | |____httpd-autoindex.conf
+</span><span class='line'>| | |____httpd-dav.conf
+</span><span class='line'>| | |____httpd-default.conf
+</span><span class='line'>| | |____httpd-info.conf
+</span><span class='line'>| | |____httpd-languages.conf
+</span><span class='line'>| | |____httpd-manual.conf
+</span><span class='line'>| | |____httpd-mpm.conf
+</span><span class='line'>| | |____httpd-multilang-errordoc.conf
+</span><span class='line'>| | |____httpd-ssl.conf
+</span><span class='line'>| | |____httpd-userdir.conf
+</span><span class='line'>| | |____httpd-vhosts.conf
+</span><span class='line'>| |____httpd.conf
+</span><span class='line'>|____other
+</span><span class='line'>| |____php5.conf
+</span><span class='line'>|____users</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add alias to ~/.bash_profile</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Option 2</h3>
+
+<p>Use Homebrew to install tree command, first you need to install Homebrew, you can reference Install Homebrew on OS X.</p>
+
+<p><strong>Install tree</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install tree</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Uninstall tree</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew uninstall tree</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
+    <updated>2014-02-02T20:22:19+08:00</updated>
+    <id>http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Beyond Compare is a file comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP directories, and archives. It is available for Windows and Linux operating systems.</p>
+
+<p>Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</p>
+
+<p><strong>Official Website</strong> <a href="http://www.scootersoftware.com/">www.scootersoftware.com</a></p>
+
+<!-- more -->
+
+
+<p><strong>Download Beyond Compare for Mac</strong></p>
+
+<p>Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal …</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bcomp a.txt b.txt</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… to compare files. The following steps are based on its command line tools for.</p>
+
+<p><strong>Use in Git CLI</strong>
+After installing Beyond Compare’s next step is to set it as the Git diff tool and merge tool. Enter the following few commands in Terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git config --global diff.tool bc3
+</span><span class='line'>$ git config --global difftool.prompt false
+</span><span class='line'>$ git config --global merge.tool bc3</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These command means that when you use in Git …</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git diff</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… or …</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git mereg</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… command, Git will automatically call just to open a command line tool to compare files Bycompare.</p>
+
+<p><strong>Use in Tower</strong></p>
+
+<p>1 Exit Tower Tool</p>
+
+<p>2 Run in a terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd ~/Library/Application\ Support/Tower</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If there is no CompareScripts folder, use …</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir CompareScripts</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… to generating a folder</p>
+
+<p>3 Download <a href="http://jdon.at/3tWV">bcomp.sh</a> and put into CompareScripts folder</p>
+
+<p>4 Use …</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod +x bcomp.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>… ommand to give it executable permissions</p>
+
+<p>5 Download <a href="http://jdon.at/J4cR">CompareToools.plist</a>  to ~/Library/Application\ Support/Tower folder</p>
+
+<p><strong>6 Start Tower</strong></p>
+
+<p>Use in SourceTree</p>
+
+<p>1 Open SourceTree</p>
+
+<p>2 Select the &ldquo;Performance&rdquo; in the menu SourceTree</p>
+
+<p>3 In the top menu bar, select &ldquo;diff&rdquo; tab</p>
+
+<p>4 In the &ldquo;External Diff / Merge&rdquo;</p>
+
+<p>If it is &ldquo;Visual Diff Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;diff commend&rdquo;, enter &ldquo;$LOCAL $REMOTE&rdquo; in the &ldquo;arguments&rdquo; in</p>
+
+<p>If the &ldquo;Merge Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;Merge Commend&rdquo;, enter &ldquo;$LOCAL $REMOTE $BASE $MERGED&rdquo; in the &ldquo;arguments&rdquo;.</p>
+
+<p><strong>References of Article</strong> <a href="http://glowface.net/2014/01/using-beyond-compare-mac-os/">在 Mac OS中使用 Beyond Compare</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on OS X]]></title>
+    <link href="http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
+    <updated>2014-01-21T20:06:27+08:00</updated>
+    <id>http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Summary</strong></p>
+
+<ul>
+<li><p>Install Octopress</p></li>
+<li><p>Setup Github Pages</p></li>
+<li><p>Add remote repository</p></li>
+<li><p>Review git branches</p></li>
+<li><p>Preview on development</p></li>
+<li><p>Deploy to Github</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p><strong>Prerequisites</strong></p>
+
+<p>Install Ruby, git</p>
+
+<p>Have a github account</p>
+
+<p>Basic knowledge of git and github</p>
+
+<p>Confidence about the command line</p>
+
+<p><strong>Install Git</strong></p>
+
+<p>Please reference <a href="http://help.github.com/mac-set-up-git/">GitHub Help</a> this is relatively simple.</p>
+
+<p><strong>Install Ruby</strong></p>
+
+<p>1 Install RVM(Ruby Version Manager)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</span><span class='line'># or
+</span><span class='line'>$ bash &lt; &lt;( curl -s https://rvm.beginrescueend.com/install/rvm )</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then you need to configure RVM shortcut commands, or you can not use rvm commands directly in the terminal</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" ' &gt;&gt; ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Meaning is directly inserted into the script. Bash_profile in, run</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or restart Terminal, then you can enter the following command to verify</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ type rvm | head -1
+</span><span class='line'>rvm is a function</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That would prove rvm command to configure a success. You can also run</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ echo $ PATH</span></code></pre></td></tr></table></div></figure>
+
+
+<p>also to verify.</p>
+
+<p>If you are using Sublime Text 2 as the editor related operations, it also needs to be configured first in the $PATH path subl as shortcut commands, as follows</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/bin/subl</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, the above-described rvm configuration can of this operation command</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ subl ~/.bash_profile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can then add the following text in the edit</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2 Install Ruby</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm install 2.1.0
+</span><span class='line'>rvm use 2.1.0
+</span><span class='line'># or
+</span><span class='line'>rvm --default 2.1.0
+</span><span class='line'># Verify the settings
+</span><span class='line'>ruby -v
+</span><span class='line'>ruby 2.1.0p0 (2013-12-25 revision 44422) [x86_64-darwin12.0]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now confirm Ruby Gems, Gems is Ruby’s package manager</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem -v 
+</span><span class='line'>2.2.1
+</span><span class='line'># If it is not the latest version, you can 
+</span><span class='line'>$ gem update --system</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Install Octopress</strong></p>
+
+<p>1 Install Octopress</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>$ cd octopress
+</span><span class='line'>$ ruby --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2 Install Plug-ins</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gem install bundler
+</span><span class='line'>$ bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3 Install Octopress Theme</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4 Modify the Configuration</p>
+
+<p>Modify the configuration file <em>_config.yml</em>, modify url, title, subtitle, author, etc., plus the comments disqus, google+, twitter, Facebook, etc., all are together. Create a CNAME file in the source.</p>
+
+<p>5 Create a Repository on GitHub</p>
+
+<p>We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog.</p>
+
+<p>6 Local configuration GitHub Branch</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When the command prompts you to enter Github URL, enter the address you just created git.</p>
+
+<p>7 Writing Articles</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake new_post["new article"]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Generate a *.markdown file in &ldquo;octopress/source _post&rdquo;, now you can edit the article.</p>
+
+<p>8 Generate &amp; Preview</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake generate
+</span><span class='line'>$ rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will generate the contents of your blog and allow you to preview it at <a href="http://localhost:4000">http://localhost:4000</a></p>
+
+<p>9 Git Submit</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Finish</strong></p>
+
+<p>Now, you have your site running on Github with Octopress.</p>
+
+<p><strong>Reference</strong> <a href="http://www.mrxuri.com/2013/07/22/creating-a-github-pages-blog-with-octopress-on-ubuntu.html">Creating a GitHub Pages Blog With Octopress on Ubuntu</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
+    <link href="http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
+    <updated>2013-06-23T19:46:17+08:00</updated>
+    <id>http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
+
+<p>Pages are served over HTTP, not HTTPs. That doesn’t make them inherently less secure, but, it does mean that you shouldn’t transact any sensitive information with them (like passwords or credit card numbers).</p>
+
+<p><strong>GitHub Official Website</strong> <a href="https://github.org/">github.org</a></p>
+
+<p>Octopress is a framework designed by Brandon Mathis for Jekyll, the blog aware static site generator powering Github Pages. To start blogging with Jekyll, you have to write your own HTML templates, CSS, Javascripts and set up your configuration. But with Octopress All of that is already taken care of. Simply clone or fork Octopress, install dependencies and the theme, and you’re set.</p>
+
+<p><strong>Octopress Official Website</strong> <a href="http://octopress.org/">octopress.org</a></p>
+
+<!-- more -->
+
+
+<p><strong>Before You Begin</strong></p>
+
+<p>1 Install Git</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get update; sudo apt-get install git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2 Install Ruby 1.9.3 via your OS package management or rbenv or RVM.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -L https://get.rvm.io | bash -s stable --ruby
+</span><span class='line'>source /home/username/.rvm/scripts/rvm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If using package management may need to install ruby-dev Check your Ruby version is at least 1.9.3 and install bundler:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>sudo gem install bundler</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Initial Setup</strong>
+Clone the octopress repository and set it up</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We’re going to use Github pages. Octopress has some rake tasks to make this easier for you. Your blog will be hosted at <a href="http://username.github.io">http://username.github.io</a> and you need to create a new Github repository called username.github.io that github pages will use the master branch as the html source for your blog. rake setup_github_pages This rake points our clone to the new repistory we just set up, configures your blog’s URL and sets up a master branch in the <em>deploy directory for deployment. Totice the blog’s URL does not include the end of the .git, it should be like this username.github.io edit </em>config.yml and fill in your blog name and other details. There’s also some configs for twitter/G+/etc plugins that are worth configuring.</p>
+
+<p><strong>Generate and Preview the Blog</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will generate the contents of your blog and allow you to preview it at <a href="http://localhost:4000.">http://localhost:4000.</a> Once you’re happy with the contents we can deploy your blog for the first time.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site. Being your first commit it could take 10 minutes for the blog to be available at <a href="http://username.github.com">http://username.github.com</a> Don’t forget to commit your changes to the source branch:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m 'After install'
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Finish</strong></p>
+
+<p>Now, you have your site running on Github with Octopress.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[About]]></title>
+    <link href="http://yoursite.com/blog/2013/06/22/about.html"/>
+    <updated>2013-06-22T17:23:42+08:00</updated>
+    <id>http://yoursite.com/blog/2013/06/22/about</id>
+    <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China. I focused on the program design, web development, Linux and open source software. In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.</p>
+
+<p>Here is my GitHub Page.</p>
+
+<!-- more -->
+
+
+<p>Ri Xu Online: <a href="http://www.mrxuri.com/">www.mrxuri.com</a></p>
+
+<p>Facebook: <a href="https://www.facebook.com/Luxurioust">www.facebook.com/Luxurioust</a></p>
+
+<p>Tweet: <a href="https://twitter.com/mrxuri">@mrxuri</a></p>
+
+<p>Google+: <a href="http://goo.gl/tF3Fpd">goo.gl/tF3Fpd</a></p>
+
+<p>LinkedIn: <a href="http://www.linkedin.com/in/luxurioust">www.linkedin.com/in/luxurioust</a></p>
+
+<p>GitHub: <a href="https://github.com/Luxurioust">github.com/Luxurioust</a></p>
+
+<p>Sina Weibo: <a href="http://weibo.com/mrxuri">@续日_Luxurioust</a></p>
+
+<p>Skype ID: luxurioust</p>
+
+<p>E-mail: xuri.me[at]gmail.com</p>
+]]></content>
+  </entry>
+  
+</feed>
