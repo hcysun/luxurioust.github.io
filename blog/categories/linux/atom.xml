@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Linux | Ri Xu's Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/linux/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-02-21T21:01:12+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://Luxurioust.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-03-01T14:46:04+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Useful .htaccess Tips &amp; Tricks]]></title>
-    <link href="http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/02/21/useful-htaccess-tips-and-tricks.html"/>
     <updated>2014-02-21T20:47:41+08:00</updated>
-    <id>http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks</id>
+    <id>http://Luxurioust.github.io/blog/2014/02/21/useful-htaccess-tips-and-tricks</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>Apache web servers has a great way to manipulate information using .htaccess files. .htaccess (hypertext access) is the default name of a directory-level configuration file that allows for decentralized management of web server configuration. The .htaccess file is placed inside the web tree, and is able to override a subset of the server’s global configuration; the extent of this subset is defined by the web server administrator. The original purpose of .htaccess was to allow per-directory access control (e.g. requiring a password to access the content), hence the name. Nowadays .htaccess can override many other configuration settings, mostly related to content control, e.g. content type and character set, CGI handlers, etc.</p>

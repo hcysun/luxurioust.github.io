@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Ri Xu's Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-02-21T21:01:12+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://Luxurioust.github.io/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-03-01T14:46:04+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Useful .htaccess Tips &amp; Tricks]]></title>
-    <link href="http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/02/21/useful-htaccess-tips-and-tricks.html"/>
     <updated>2014-02-21T20:47:41+08:00</updated>
-    <id>http://yoursite.com/blog/2014/02/21/useful-htaccess-tips-and-tricks</id>
+    <id>http://Luxurioust.github.io/blog/2014/02/21/useful-htaccess-tips-and-tricks</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>Apache web servers has a great way to manipulate information using .htaccess files. .htaccess (hypertext access) is the default name of a directory-level configuration file that allows for decentralized management of web server configuration. The .htaccess file is placed inside the web tree, and is able to override a subset of the server’s global configuration; the extent of this subset is defined by the web server administrator. The original purpose of .htaccess was to allow per-directory access control (e.g. requiring a password to access the content), hence the name. Nowadays .htaccess can override many other configuration settings, mostly related to content control, e.g. content type and character set, CGI handlers, etc.</p>
@@ -423,9 +423,9 @@
   
   <entry>
     <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
-    <link href="http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/02/04/install-homebrew-on-os-x.html"/>
     <updated>2014-02-04T20:42:31+08:00</updated>
-    <id>http://yoursite.com/blog/2014/02/04/install-homebrew-on-os-x</id>
+    <id>http://Luxurioust.github.io/blog/2014/02/04/install-homebrew-on-os-x</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
@@ -481,9 +481,9 @@
   
   <entry>
     <title type="html"><![CDATA[Add Tree Command in OS X]]></title>
-    <link href="http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/02/03/add-tree-command-in-os-x.html"/>
     <updated>2014-02-03T20:38:12+08:00</updated>
-    <id>http://yoursite.com/blog/2014/02/03/add-tree-command-in-os-x</id>
+    <id>http://Luxurioust.github.io/blog/2014/02/03/add-tree-command-in-os-x</id>
     <content type="html"><![CDATA[<h3>Option 1</h3>
 
 <p>Not found of OS X default tree command, this command line similar to the effect of the tree</p>
@@ -593,9 +593,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
-    <link href="http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
     <updated>2014-02-02T20:22:19+08:00</updated>
-    <id>http://yoursite.com/blog/2014/02/02/use-beyond-compare-in-os-x</id>
+    <id>http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>Beyond Compare is a file comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP directories, and archives. It is available for Windows and Linux operating systems.</p>
@@ -694,9 +694,9 @@ After installing Beyond Compare’s next step is to set it as the Git diff tool 
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on OS X]]></title>
-    <link href="http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
     <updated>2014-01-21T20:06:27+08:00</updated>
-    <id>http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x</id>
+    <id>http://Luxurioust.github.io/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x</id>
     <content type="html"><![CDATA[<p><strong>Summary</strong></p>
 
 <ul>
@@ -890,9 +890,9 @@ After installing Beyond Compare’s next step is to set it as the Git diff tool 
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
-    <link href="http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
+    <link href="http://Luxurioust.github.io/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
     <updated>2013-06-23T19:46:17+08:00</updated>
-    <id>http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
+    <id>http://Luxurioust.github.io/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>
@@ -979,9 +979,9 @@ Clone the octopress repository and set it up</p>
   
   <entry>
     <title type="html"><![CDATA[About]]></title>
-    <link href="http://yoursite.com/blog/2013/06/22/about.html"/>
+    <link href="http://Luxurioust.github.io/blog/2013/06/22/about.html"/>
     <updated>2013-06-22T17:23:42+08:00</updated>
-    <id>http://yoursite.com/blog/2013/06/22/about</id>
+    <id>http://Luxurioust.github.io/blog/2013/06/22/about</id>
     <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China. I focused on the program design, web development, Linux and open source software. In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.</p>
 
 <p>Here is my GitHub Page.</p>

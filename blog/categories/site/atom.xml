@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Site | Ri Xu's Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/site/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-02-21T21:01:12+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://Luxurioust.github.io/blog/categories/site/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-03-01T14:46:04+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on OS X]]></title>
-    <link href="http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
+    <link href="http://Luxurioust.github.io/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x.html"/>
     <updated>2014-01-21T20:06:27+08:00</updated>
-    <id>http://yoursite.com/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x</id>
+    <id>http://Luxurioust.github.io/blog/2014/01/21/creating-a-github-pages-blog-with-octopress-on-os-x</id>
     <content type="html"><![CDATA[<p><strong>Summary</strong></p>
 
 <ul>
@@ -170,9 +170,9 @@ $ rake deploy
   
   <entry>
     <title type="html"><![CDATA[Creating a GitHub Pages Blog With Octopress on Ubuntu]]></title>
-    <link href="http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
+    <link href="http://Luxurioust.github.io/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu.html"/>
     <updated>2013-06-23T19:46:17+08:00</updated>
-    <id>http://yoursite.com/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
+    <id>http://Luxurioust.github.io/blog/2013/06/23/creating-a-github-pages-blog-with-octopress-on-ubuntu</id>
     <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
 
 <p>GitHub Pages are public webpages freely hosted and easily published through our site. You can publish online using the Automatic Page Generator. If you prefer to work locally you can use the GitHub for Mac and Windows apps, or the command line.</p>

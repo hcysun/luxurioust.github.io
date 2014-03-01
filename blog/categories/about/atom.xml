@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: About | Ri Xu's Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/about/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-02-21T21:01:12+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://Luxurioust.github.io/blog/categories/about/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-03-01T14:46:04+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[About]]></title>
-    <link href="http://yoursite.com/blog/2013/06/22/about.html"/>
+    <link href="http://Luxurioust.github.io/blog/2013/06/22/about.html"/>
     <updated>2013-06-22T17:23:42+08:00</updated>
-    <id>http://yoursite.com/blog/2013/06/22/about</id>
+    <id>http://Luxurioust.github.io/blog/2013/06/22/about</id>
     <content type="html"><![CDATA[<p>Hi! I’m Ri Xu (续日). You can call me Luxurioust. I was born in 1990s. I am an university student, learning in Heilongjiang University of Science &amp; Technology in Harbin, China. I focused on the program design, web development, Linux and open source software. In spare time, I like listening classical music, surfing internet, play the clarinet and taking a leisurely walk outdoors.</p>
 
 <p>Here is my GitHub Page.</p>
