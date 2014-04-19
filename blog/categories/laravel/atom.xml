@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Laravel, | Ri Xu's Blog]]></title>
+  <link href="http://Luxurioust.github.io/blog/categories/laravel/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-04-19T15:20:35+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
+  <author>
+    <name><![CDATA[Ri Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Laravel art 命令行工具]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/04/19/laravel-artisan-command-line-tools.html"/>
+    <updated>2014-04-19T14:39:19+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/04/19/laravel-artisan-command-line-tools</id>
+    <content type="html"><![CDATA[<h3>全局相关</h3>
+
+<ul>
+<li><strong>php artisan</strong>：显示详细的命令行帮助信息，同 php artisan list</li>
+<li><strong>php artisan –help</strong>：显示帮助命令的使用格式，同 php artisan help</li>
+<li><strong>php artisan –version</strong>：显示当前使用的 Laravel 版本</li>
+<li><strong>php artisan changes</strong>：列出当前版本相对于上一版本的主要变化</li>
+<li><strong>php artisan down</strong>：将站点设为维护状态</li>
+<li><strong>php artisan up</strong>：将站点设回可访问状态</li>
+<li><strong>php artisan optimize</strong>：优化应用程序性能，生成自动加载文件，且产生聚合编译文件 bootstrap/compiled.php</li>
+<li><strong>php artisan dump-autoload</strong>：重新生成框架的自动加载文件，相当于 optimize 的再操作</li>
+<li><strong>php artisan clear-compiled</strong>：清除编译生成的文件，相当于 optimize 的反操作</li>
+<li><strong>php artisan migrate</strong>：执行数据迁移</li>
+<li><strong>php artisan routes</strong>：列出当前应用全部的路由规则</li>
+<li><strong>php artisan serve</strong>：使用 PHP 内置的开发服务器启动应用 【要求 PHP 版本在 5.4 或以上】</li>
+</ul>
+
+
+<!-- more -->
+
+
+<ul>
+<li><strong>php artisan tinker</strong>：进入与当前应用环境绑定的 REPL 环境，相当于 Rails 框架的 rails console 命令</li>
+<li><strong>php artisan workbench</strong> 组织名/包名：这将在应用根目录产生一个名为 workbench 的文件夹，然后按 组织名/包名 的形式生成一个符合 Composer 标准的包结构，并自动安装必要的依赖【需要首先完善好 app/config/workbench.php 文件的内容】
+
+<h3>功能相关</h3></li>
+<li><strong>php artisan cache:clear</strong>：清除应用程序缓存</li>
+<li><strong>php artisan command:make</strong> 命令名：在 app/commands 目录下生成一个名为 命令名.php 的自定义命令文件</li>
+<li><strong>php artisan controller:make</strong> 控制器名：在 app/controllers 目录下生成一个名为 控制器名.php 的控制器文件</li>
+<li><strong>php artisan db:seed</strong>：对数据库填充种子数据，以用于测试</li>
+<li><strong>php artisan key:generate</strong>：生成一个随机的 key，并自动更新到 app/config/app.ph 的 key 键值对</li>
+<li><strong>php artisan migrate:install</strong>：初始化迁移数据表</li>
+<li><strong>php artisan migrate:make 迁移名</strong>：这将在 app/database/migrations 目录下生成一个名为 时间+迁移名.php 的数据迁移文件，并自动执行一次 php artisan dump-autoload 命令</li>
+<li><strong>php artisan migrate:refresh</strong>：重置并重新执行所有的数据迁移</li>
+<li><strong>php artisan migrate:reset</strong>：回滚所有的数据迁移</li>
+<li><strong>php artisan migrate:rollback</strong>：回滚最近一次数据迁移</li>
+<li><strong>php artisan session:table</strong>：生成一个用于 session 的数据迁移文件</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
