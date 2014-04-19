@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-  <updated>2014-04-19T15:23:55+08:00</updated>
+  <updated>2014-04-19T15:28:05+08:00</updated>
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Laravel art 命令行工具]]></title>
+    <title type="html"><![CDATA[Laravel Artisan 命令行工具]]></title>
     <link href="http://Luxurioust.github.io/blog/2014/04/19/laravel-artisan-command-line-tools.html"/>
     <updated>2014-04-19T14:39:19+08:00</updated>
     <id>http://Luxurioust.github.io/blog/2014/04/19/laravel-artisan-command-line-tools</id>
