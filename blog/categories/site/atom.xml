@@ -4,11 +4,7 @@
   <title><![CDATA[Category: Site | Ri Xu's Blog]]></title>
   <link href="http://Luxurioust.github.io/blog/categories/site/atom.xml" rel="self"/>
   <link href="http://Luxurioust.github.io/"/>
-<<<<<<< HEAD
   <updated>2014-05-01T14:45:00+08:00</updated>
-=======
-  <updated>2014-04-27T20:32:05+08:00</updated>
->>>>>>> f3e803a7949665fef0fb8de74a431d414725b734
   <id>http://Luxurioust.github.io/</id>
   <author>
     <name><![CDATA[Ri Xu]]></name>
@@ -54,7 +50,6 @@
 <p><strong>Install Ruby</strong></p>
 
 <p>1 Install RVM(Ruby Version Manager)
-<<<<<<< HEAD
 ```</p>
 
 <h1>Install RVM (development version):</h1>
@@ -64,14 +59,6 @@
 <h1>Install RVM stable with ruby:</h1>
 
 <p>$ \curl -sSL <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &mdash;ruby
-=======
-```
-$ bash -s stable &lt; &lt;(curl -s <a href="https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer">https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer</a>)</p>
-
-<h1>or</h1>
-
-<p>$ bash &lt; &lt;( curl -s <a href="https://rvm.beginrescueend.com/install/rvm">https://rvm.beginrescueend.com/install/rvm</a> )
->>>>>>> f3e803a7949665fef0fb8de74a431d414725b734
 <code>
 Then you need to configure RVM shortcut commands, or you can not use rvm commands directly in the terminal
 </code>
