@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Macintosh | Ri Xu's Blog]]></title>
+  <link href="http://Luxurioust.github.io/blog/categories/macintosh/atom.xml" rel="self"/>
+  <link href="http://Luxurioust.github.io/"/>
+  <updated>2014-05-01T14:45:00+08:00</updated>
+  <id>http://Luxurioust.github.io/</id>
+  <author>
+    <name><![CDATA[Ri Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X 设置 PAC 全局自动代理]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/04/26/proxy-pac-on-os-x.html"/>
+    <updated>2014-04-26T14:38:57+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/04/26/proxy-pac-on-os-x</id>
+    <content type="html"><![CDATA[<p>直接进入系统偏好设置 → 网络 → 高级 → 代理，然后在 “代理配置文件” 一栏填入 PAC 文件的 URL 即可。</p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/a40b648fgw1eft01nw4awj20lq0jajts.jpg" title="OS X 设置 PAC 全局自动代理" alt=" OS X 设置 PAC 全局自动代理 " />
+PAC文件格式</p>
+
+<p>PAC文件是纯文本格式的，实际上就是 JavaScript 文件。Chrome/Chromium 的扩展 SwitchSharp 的"Auto Switch Mode"功能实际上也是创建和维护一个简单的PAC文件，但功能比较弱。</p>
+
+<!-- more -->
+
+
+<p>PAC 文件 FindProxyForURL 函数</p>
+
+<p>PAC文件中必须包含一个函数：FindProxyForURL(url, host)。</p>
+
+<p>参数 url 是用户输入的 url，参数 host 是 url 中的主机名。</p>
+
+<p>比如 url 为 <a href="http://www.twitter.com/">http://www.twitter.com/</a>，那么 host 就是 www.twitter.com</p>
+
+<p>一个最简单的PAC文件内容如下：
+<code>
+function FindProxyForURL(url, host) {
+ return "DIRECT";
+}
+</code>
+这个 PAC 文件实际上什么也没做，对任何URL，都将"DIRECT"（直接连网）。</p>
+
+<p>PAC 文件返回值类型</p>
+
+<p>除了可以 return &ldquo;DIRECT&rdquo; 以外，还有两种常用方式：</p>
+
+<p>PROXY proxysample.com:8080</p>
+
+<p>http 代理的主机和端口，主机也可以用 IP 表示</p>
+
+<p>SOCKS5 socks5sample.com:1080</p>
+
+<p>socks5 代理的主机和端口，主机也可以用 IP 表示</p>
+
+<p>那么，用 PAC 指定一个 http 代理应该这样写
+<code>
+function FindProxyForURL(url, host) {
+  return "PROXY 127.0.0.1：8087";
+}
+</code>
+甚至可以指定多个代理
+<code>
+function FindProxyForURL(url, host) {
+  return "DIRECT; PROXY 127.0.0.1:8087; SOCKS5 proxysample.com:8080";
+}
+</code>
+这句语句的意思是：</p>
+
+<ul>
+<li><p>对所有 URL，都直接连接；</p></li>
+<li><p>如果不能直接连接，那么就使用 127.0.0.1：8087 这个 http 代理连接；</p></li>
+<li><p>如果还是不能连接，则使用 proxysample.com:8080 这个 socks5 代理连接。</p></li>
+</ul>
+
+
+<p>使用不同连接的顺序和语句中的顺序一致，你可以根据自己的实际情况更改。</p>
+
+<p>也许你明确知道哪些网站不能直连，必须用 PROXY 或者 SOCKS5 连接，那么可以对站点分别指定代理配置
+```
+function FindProxyForURL(url, host) {
+   if (shExpMatch(url,&ldquo;<em>.google.com/</em>&rdquo;)) {</p>
+
+<pre><code> return "PROXY 127.0.0.1:8087";
+</code></pre>
+
+<p>   }
+   if (shExpMatch(url, &ldquo;<em>.wikipedia.com:</em>/*&rdquo;)) {</p>
+
+<pre><code> return "SOCKS5 proxysample.com:8080";
+</code></pre>
+
+<p>   }
+   if (isInNet(host, &ldquo;10.0.0.0&rdquo;,  &ldquo;255.0.0.0&rdquo;)){</p>
+
+<pre><code> return "DIRECT";
+</code></pre>
+
+<p>   }
+   return &ldquo;DIRECT; PROXY 127.0.0.1:8087; SOCKS5 proxysample.com:8080&rdquo;;
+}
+```
+这个 PAC 文件中引入了两个新的函数，但从字面意思上，我们也可以猜出代码的大概意思：</p>
+
+<ul>
+<li><p>当 url 是 *.google.com/* 时，自动使用 PROXY 代理；</p></li>
+<li><p>当 url 是 *.wikipedia.cm/* 时，自动使用 SOCKS5 代理；</p></li>
+<li><p>当 host 是 10.0.0.0 /255.0.0.0 的子网内时，自动直连；</p></li>
+<li><p>如果都不匹配，则依次按 DIRECT、PROXY、SOCKS5 的次序尝试。</p></li>
+</ul>
+
+
+<p>shExpMatch 函数用来匹配 url 或者 host，匹配的方式和 DOS 的通配符相似。例如前面用到的 &ldquo;*.google.com/*&rdquo; 可以匹配任意包含 &ldquo;.google.com/&rdquo; 的字符串。</p>
+
+<p>Chrome/Chromium 的扩展 SwitchSharp 创建的 PAC 文件还自定义了一个函数，可以用来匹配正则表达式，不过个人认为在 url 匹配上通常不需要使用强大的正则表达式。</p>
+
+<p>isInNet函数用来返回请求的 host 是否在指定的域内。值得注意的是，isInNet 的第二个参数必须是 IP，不能是主机名。因此需要把主机名转换成IP。比如 &ldquo;isInNet(host, dnsResolve(www.google.com), "255.255.255.0&rdquo;)&ldquo;。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install Homebrew on OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/04/install-homebrew-on-os-x.html"/>
+    <updated>2014-02-04T20:42:31+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/04/install-homebrew-on-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Homebrew is a package management system that simplifies the installation of software on the Mac OS X operating system. It is a free/open source software project to simplify installation of other free/open source software. It is similar in aim and function to MacPorts and Fink. It was written by Max Howell and has gained popularity in the Ruby on Rails community and earned praise for its extensibility. In 2012, Homebrew had the largest number of new contributors on GitHub.</p>
+
+<p><strong>Official Website</strong> <a href="http://brew.sh/">brew.sh</a></p>
+
+<!-- more -->
+
+
+<p><strong>Install</strong>
+<code>
+$ sudo su
+$ curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C /usr/local
+</code>
+<strong>Uninstall</strong>
+<code>
+$ sudo brew uninstall unrar
+</code>
+If you installed MacPorts can’t install homebrew, you must first uninstall MacPorts
+<code>
+$ sudo port -f uninstall installed
+$ sudo rm -rf \
+/opt/local \
+/Applications/DarwinPorts \
+/Applications/MacPorts \
+/Library/LaunchDaemons/org.macports.* \
+/Library/Receipts/DarwinPorts*.pkg \
+/Library/Receipts/MacPorts*.pkg \
+/Library/StartupItems/DarwinPortsStartup \
+/Library/Tcl/darwinports1.0 \
+/Library/Tcl/macports1.0 \
+~/.macports
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add Tree Command in OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/03/add-tree-command-in-os-x.html"/>
+    <updated>2014-02-03T20:38:12+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/03/add-tree-command-in-os-x</id>
+    <content type="html"><![CDATA[<h3>Option 1</h3>
+
+<p>Not found of OS X default tree command, this command line similar to the effect of the tree
+<code>
+$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+</code>
+… like this …</p>
+
+<!-- more -->
+
+
+<p><code>
+.
+|____extra
+| |____httpd-autoindex.conf
+| |____httpd-dav.conf
+| |____httpd-default.conf
+| |____httpd-info.conf
+| |____httpd-languages.conf
+| |____httpd-manual.conf
+| |____httpd-mpm.conf
+| |____httpd-multilang-errordoc.conf
+| |____httpd-ssl.conf
+| |____httpd-userdir.conf
+| |____httpd-vhosts.conf
+|____httpd.conf
+|____magic
+|____mime.types
+|____original
+| |____extra
+| | |____httpd-autoindex.conf
+| | |____httpd-dav.conf
+| | |____httpd-default.conf
+| | |____httpd-info.conf
+| | |____httpd-languages.conf
+| | |____httpd-manual.conf
+| | |____httpd-mpm.conf
+| | |____httpd-multilang-errordoc.conf
+| | |____httpd-ssl.conf
+| | |____httpd-userdir.conf
+| | |____httpd-vhosts.conf
+| |____httpd.conf
+|____other
+| |____php5.conf
+|____users
+</code>
+Add alias to ~/.bash_profile</p>
+
+<p><code>
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+</code></p>
+
+<h3>Option 2</h3>
+
+<p>Use Homebrew to install tree command, first you need to install Homebrew, you can reference Install Homebrew on OS X.</p>
+
+<p><strong>Install tree</strong>
+<code>
+$ brew install tree
+</code>
+<strong>Uninstall tree</strong></p>
+
+<p><code>
+$ brew uninstall tree
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Beyond Compare in OS X]]></title>
+    <link href="http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x.html"/>
+    <updated>2014-02-02T20:22:19+08:00</updated>
+    <id>http://Luxurioust.github.io/blog/2014/02/02/use-beyond-compare-in-os-x</id>
+    <content type="html"><![CDATA[<p><strong>Wiki</strong></p>
+
+<p>Beyond Compare is a file comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP directories, and archives. It is available for Windows and Linux operating systems.</p>
+
+<p>Scooter company released some time ago in a long-awaited Mac beta version Beyond Compare, completing the Windows, Linux and Mac full coverage platform. If you are a Mac user, and it is the git heavy users, why not try it?</p>
+
+<p><strong>Official Website</strong> <a href="http://www.scootersoftware.com/">www.scootersoftware.com</a></p>
+
+<!-- more -->
+
+
+<p><strong>Download Beyond Compare for Mac</strong></p>
+
+<p>Extracting the Beyond Compare, drag to &ldquo;Programs&rdquo; folder of the installation. After installing Beyond Compare, the next step is to install it from the command-line tool. Open Beyond Compare, select &ldquo;Install Command Line Tools&rdquo; in &ldquo;Beyond Compare&rdquo; drop-down menu, in the pop-up box, enter the system password, it will automatically install the command-line tool to the system. After installing the command line tools, you can enter in a terminal …</p>
+
+<p><code>
+$ bcomp a.txt b.txt
+</code></p>
+
+<p>… to compare files. The following steps are based on its command line tools for.</p>
+
+<p><strong>Use in Git CLI</strong>
+After installing Beyond Compare’s next step is to set it as the Git diff tool and merge tool. Enter the following few commands in Terminal</p>
+
+<p><code>
+$ git config --global diff.tool bc3
+$ git config --global difftool.prompt false
+$ git config --global merge.tool bc3
+</code>
+These command means that when you use in Git …
+<code>
+$ git diff
+</code>
+… or …
+<code>
+$ git mereg
+</code>
+… command, Git will automatically call just to open a command line tool to compare files Bycompare.</p>
+
+<p><strong>Use in Tower</strong></p>
+
+<p>1 Exit Tower Tool</p>
+
+<p>2 Run in a terminal</p>
+
+<p><code>
+$ cd ~/Library/Application\ Support/Tower
+</code>
+If there is no CompareScripts folder, use …
+<code>
+$ mkdir CompareScripts
+</code>
+… to generating a folder</p>
+
+<p>3 Download <a href="http://jdon.at/3tWV">bcomp.sh</a> and put into CompareScripts folder</p>
+
+<p>4 Use …
+<code>
+$ chmod +x bcomp.sh
+</code>
+… ommand to give it executable permissions</p>
+
+<p>5 Download <a href="http://jdon.at/J4cR">CompareToools.plist</a>  to ~/Library/Application\ Support/Tower folder</p>
+
+<p><strong>6 Start Tower</strong></p>
+
+<p>Use in SourceTree</p>
+
+<p>1 Open SourceTree</p>
+
+<p>2 Select the &ldquo;Performance&rdquo; in the menu SourceTree</p>
+
+<p>3 In the top menu bar, select &ldquo;diff&rdquo; tab</p>
+
+<p>4 In the &ldquo;External Diff / Merge&rdquo;</p>
+
+<p>If it is &ldquo;Visual Diff Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;diff commend&rdquo;, enter &ldquo;$LOCAL $REMOTE&rdquo; in the &ldquo;arguments&rdquo; in</p>
+
+<p>If the &ldquo;Merge Tool&rdquo;, select &ldquo;Other&rdquo;, enter &ldquo;/usr/local/bin/bcomp&rdquo; in &ldquo;Merge Commend&rdquo;, enter &ldquo;$LOCAL $REMOTE $BASE $MERGED&rdquo; in the &ldquo;arguments&rdquo;.</p>
+
+<p><strong>References of Article</strong> <a href="http://glowface.net/2014/01/using-beyond-compare-mac-os/">在 Mac OS中使用 Beyond Compare</a></p>
+]]></content>
+  </entry>
+  
+</feed>

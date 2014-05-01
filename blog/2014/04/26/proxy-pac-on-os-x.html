@@ -1,0 +1,294 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>OS X 设置 PAC 全局自动代理 - Ri Xu's Blog</title>
+	<meta name="author" content="Ri Xu">
+
+	
+	<meta name="description" content="直接进入系统偏好设置 → 网络 → 高级 → 代理，然后在 “代理配置文件” 一栏填入 PAC 文件的 URL 即可。 PAC文件格式 PAC文件是纯文本格式的，实际上就是 JavaScript 文件。Chrome/Chromium 的扩展 SwitchSharp 的&#8221;Auto &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Ri Xu's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Ri Xu's Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/blog/about/">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/blog/about/">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:Luxurioust.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		<a class="facebook" href="http://www.facebook.com/Luxurioust" title="Facebook" target="_blank">Facebook</a>
+		
+		
+		<a class="google" href="https://plus.google.com/117971954998812436240?rel=author" title="Google+" target="_blank">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/mrxuri" title="Twitter" target="_blank">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/Luxurioust" title="GitHub" target="_blank">GitHub</a>
+		
+    
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/luxurioust" target="_blank">LinkedIn</a>
+		
+		
+		<a class="weibo" href="http://weibo.com/mrxuri" title="Weibo" target="_blank">Weibo</a>
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS" target="_blank">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:Luxurioust.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">OS X 设置 PAC 全局自动代理</h2>
+	<div class="entry-content"><p>直接进入系统偏好设置 → 网络 → 高级 → 代理，然后在 “代理配置文件” 一栏填入 PAC 文件的 URL 即可。</p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/a40b648fgw1eft01nw4awj20lq0jajts.jpg" title="OS X 设置 PAC 全局自动代理" alt=" OS X 设置 PAC 全局自动代理 " />
+PAC文件格式</p>
+
+<p>PAC文件是纯文本格式的，实际上就是 JavaScript 文件。Chrome/Chromium 的扩展 SwitchSharp 的&#8221;Auto Switch Mode&#8221;功能实际上也是创建和维护一个简单的PAC文件，但功能比较弱。</p>
+
+<!-- more -->
+
+
+<p>PAC 文件 FindProxyForURL 函数</p>
+
+<p>PAC文件中必须包含一个函数：FindProxyForURL(url, host)。</p>
+
+<p>参数 url 是用户输入的 url，参数 host 是 url 中的主机名。</p>
+
+<p>比如 url 为 <a href="http://www.twitter.com/">http://www.twitter.com/</a>，那么 host 就是 www.twitter.com</p>
+
+<p>一个最简单的PAC文件内容如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function FindProxyForURL(url, host) {
+</span><span class='line'> return "DIRECT";
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个 PAC 文件实际上什么也没做，对任何URL，都将&#8221;DIRECT&#8221;（直接连网）。</p>
+
+<p>PAC 文件返回值类型</p>
+
+<p>除了可以 return &ldquo;DIRECT&rdquo; 以外，还有两种常用方式：</p>
+
+<p>PROXY proxysample.com:8080</p>
+
+<p>http 代理的主机和端口，主机也可以用 IP 表示</p>
+
+<p>SOCKS5 socks5sample.com:1080</p>
+
+<p>socks5 代理的主机和端口，主机也可以用 IP 表示</p>
+
+<p>那么，用 PAC 指定一个 http 代理应该这样写</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function FindProxyForURL(url, host) {
+</span><span class='line'>  return "PROXY 127.0.0.1：8087";
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>甚至可以指定多个代理</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function FindProxyForURL(url, host) {
+</span><span class='line'>  return "DIRECT; PROXY 127.0.0.1:8087; SOCKS5 proxysample.com:8080";
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这句语句的意思是：</p>
+
+<ul>
+<li><p>对所有 URL，都直接连接；</p></li>
+<li><p>如果不能直接连接，那么就使用 127.0.0.1：8087 这个 http 代理连接；</p></li>
+<li><p>如果还是不能连接，则使用 proxysample.com:8080 这个 socks5 代理连接。</p></li>
+</ul>
+
+
+<p>使用不同连接的顺序和语句中的顺序一致，你可以根据自己的实际情况更改。</p>
+
+<p>也许你明确知道哪些网站不能直连，必须用 PROXY 或者 SOCKS5 连接，那么可以对站点分别指定代理配置</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function FindProxyForURL(url, host) {
+</span><span class='line'>   if (shExpMatch(url,"*.google.com/*")) {
+</span><span class='line'>     return "PROXY 127.0.0.1:8087";
+</span><span class='line'>   }
+</span><span class='line'>   if (shExpMatch(url, "*.wikipedia.com:*/*")) {
+</span><span class='line'>     return "SOCKS5 proxysample.com:8080";
+</span><span class='line'>   }
+</span><span class='line'>   if (isInNet(host, "10.0.0.0",  "255.0.0.0")){
+</span><span class='line'>     return "DIRECT";
+</span><span class='line'>   }
+</span><span class='line'>   return "DIRECT; PROXY 127.0.0.1:8087; SOCKS5 proxysample.com:8080";
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个 PAC 文件中引入了两个新的函数，但从字面意思上，我们也可以猜出代码的大概意思：</p>
+
+<ul>
+<li><p>当 url 是 *.google.com/* 时，自动使用 PROXY 代理；</p></li>
+<li><p>当 url 是 *.wikipedia.cm/* 时，自动使用 SOCKS5 代理；</p></li>
+<li><p>当 host 是 10.0.0.0 /255.0.0.0 的子网内时，自动直连；</p></li>
+<li><p>如果都不匹配，则依次按 DIRECT、PROXY、SOCKS5 的次序尝试。</p></li>
+</ul>
+
+
+<p>shExpMatch 函数用来匹配 url 或者 host，匹配的方式和 DOS 的通配符相似。例如前面用到的 &ldquo;*.google.com/*&rdquo; 可以匹配任意包含 &ldquo;.google.com/&rdquo; 的字符串。</p>
+
+<p>Chrome/Chromium 的扩展 SwitchSharp 创建的 PAC 文件还自定义了一个函数，可以用来匹配正则表达式，不过个人认为在 url 匹配上通常不需要使用强大的正则表达式。</p>
+
+<p>isInNet函数用来返回请求的 host 是否在指定的域内。值得注意的是，isInNet 的第二个参数必须是 IP，不能是主机名。因此需要把主机名转换成IP。比如 &ldquo;isInNet(host, dnsResolve(www.google.com), &#8220;255.255.255.0&rdquo;)&ldquo;。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-26T14:38:57+08:00" pubdate data-updated="true">Apr 26<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/macintosh/'>Macintosh</a>
+
+
+</div>
+	
+	<div class="comments"><a href="#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013 - 2014
+
+    Ri Xu. 
+
+ All rights reserved.</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus-01';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Luxurioust.github.io/blog/2014/04/26/proxy-pac-on-os-x.html';
+        var disqus_url = 'http://Luxurioust.github.io/blog/2014/04/26/proxy-pac-on-os-x.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//go.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
