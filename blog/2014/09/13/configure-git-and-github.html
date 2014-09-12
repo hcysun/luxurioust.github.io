@@ -1,0 +1,463 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Configure Git and Github - Ri Xu's Blog</title>
+	<meta name="author" content="Ri Xu">
+
+	
+	<meta name="description" content="来自维基百科 Git Git是一个分布式版本控制／软件配置管理软件，原是Linux内核开发者林纳斯·托瓦兹（Linus Torvalds）为更好地管理Linux内核开发而设计。应注意的是，这与GNU Interactive Tools（一个类似Norton Commander界面的文件管理器） &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Ri Xu's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Ri Xu's Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/blog/about/">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/blog/about/">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:Luxurioust.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		<a class="facebook" href="http://www.facebook.com/Luxurioust" title="Facebook" target="_blank">Facebook</a>
+		
+		
+		<a class="google" href="https://plus.google.com/117971954998812436240?rel=author" title="Google+" target="_blank">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/xurime" title="Twitter" target="_blank">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/Luxurioust" title="GitHub" target="_blank">GitHub</a>
+		
+    
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/luxurioust" target="_blank">LinkedIn</a>
+		
+		
+		<a class="weibo" href="http://weibo.com/mrxuri" title="Weibo" target="_blank">Weibo</a>
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS" target="_blank">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:Luxurioust.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Configure Git and Github</h2>
+	<div class="entry-content"><p>来自维基百科</p>
+
+<h3>Git</h3>
+
+<p>Git是一个分布式版本控制／软件配置管理软件，原是Linux内核开发者林纳斯·托瓦兹（Linus Torvalds）为更好地管理Linux内核开发而设计。应注意的是，这与GNU Interactive Tools（一个类似Norton Commander界面的文件管理器）有所不同。</p>
+
+<p>Git最初的开发动力来自于BitKeeper和Monotone。Git最初只是作为一个可以被其他前端（比如Cogito或StGIT[7]）包装的后端而开发的，但后来Git内核已经成熟到可以独立地用作版本控制[8]。很多著名的软件都使用Git进行版本控制[9]，其中包括Linux内核、X.Org服务器和OLPC内核等项目的开发流程。</p>
+
+<p>官方网站：<a href="http://git-scm.com">git-scm.com</a></p>
+
+<!-- more -->
+
+
+<h3>GitHUb</h3>
+
+<p>GitHub 是一个共享虚拟主机服务，用于存放使用Git版本控制的软件代码和内容项目。它由GitHub公司（曾称Logical Awesome）的开发者Chris Wanstrath、PJ Hyett和Tom Preston-Werner使用Ruby on Rails编写而成。</p>
+
+<p>GitHub同时提供付费账户和为开源项目提供的免费账户。根据在2009年的Git用户调查，GitHub是最流行的Git存取站点。除了允许个人和组织建立和存取代码库以外，它也提供了一些方便社会化软件开发的功能，包括允许用户跟踪其他用户、组织、软件库的动态，对软件代码的改动和 bug 提出评论等。GitHub也提供了图表功能，用于显示开发者们怎样在代码库上工作以及软件的开发活跃程度。</p>
+
+<p>GitHub也提供一个粘贴箱风格的站点Gist，供软件代码库使用的Wiki，以及通过git版本库进行编辑和管理的网页托管功能。</p>
+
+<p>网站：<a href="http://github.com">github.com</a></p>
+
+<p>好了，让我们开始吧。</p>
+
+<p>首先在Git的官方网站上下载系统所适合的客户端，如果你是Mac或Linux用户，也可以使用终端。</p>
+
+<p><img src="http://ww3.sinaimg.cn/large/a40b648ftw1eka5zrsov1j20e90b2wfa.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zrzr9uj20e90b2abi.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww3.sinaimg.cn/large/a40b648ftw1eka5zsj03nj20e90b2t9g.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww2.sinaimg.cn/large/a40b648ftw1eka5zsrl5sj20e90b2gms.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww1.sinaimg.cn/mw690/a40b648ftw1eka5ztu5ecj20e90b2wg3.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww1.sinaimg.cn/large/a40b648ftw1eka5zticxnj20e90b2t9g.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zu990cj20e90b2q4l.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zulucvj20e90b2wez.jpg" alt="安装Git GUI Client" /></p>
+
+<p><img src="http://ww2.sinaimg.cn/large/a40b648ftw1eka5zv8r9jj20e90b2q3m.jpg" alt="安装Git GUI Client" /></p>
+
+<h3>配置Git软件并基于SSH生产密钥</h3>
+
+<p>产生一个新的SSH密钥。当提示“Enter a file in which to save the key”时仅仅按Enter就可以保持默认设置。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh-keygen -t rsa -C "your_email@youremail.com"
+</span><span class='line'># Creates a new ssh key using the provided email
+</span><span class='line'># Generating public/private rsa key pair.# Enter file in which to save the key (/home/you/.ssh/id_rsa):</span></code></pre></td></tr></table></div></figure>
+
+
+<p>回车后会提示输入密码并确认密码：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Enter passphrase (empty for no passphrase): [Type a passphrase]# Enter same passphrase again: [Type passphrase again]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后看到类似这样的信息即表明密钥生成成功了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Your identification has been saved in /home/you/.ssh/id_rsa.
+</span><span class='line'># Your public key has been saved in /home/you/.ssh/id_rsa.pub.# The key fingerprint is:
+</span><span class='line'># 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@youremail.com</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zvpqcoj20it0evjtq.jpg" alt="生成SSH密钥" />
+<img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zvv0qhj20ic0axwfx.jpg" alt="生成SSH密钥" /></p>
+
+<h3>注册一个GitHub账号</h3>
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zxk6thj20m80r50v3.jpg" alt="注册GitHub账号" /></p>
+
+<p>在Github服务器端输入SSH 密钥并检测连接的成功性，登录自己的Github帐号，进入“Account settings/SSH Keys”，输入刚才产生的密钥即可。</p>
+
+<p><img src="http://ww4.sinaimg.cn/large/a40b648ftw1eka5zwsyakj20kx0fzwgk.jpg" alt="输入SSH" /></p>
+
+<p>然后就可以尝试着检测一下SSH连接git到Github服务器了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -T git@github.com
+</span><span class='line'># Attempts to ssh to github</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可能会看到这样的警告，但没有关系，输入“yes”回车：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The authenticity of host 'github.com (207.97.227.239)' can't be established.# RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.# Are you sure you want to continue connecting (yes/no)?</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后就可以看到这样的连接成功的消息了：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Hi username! You've successfully authenticated, but GitHub does not
+</span><span class='line'># provide shell access.</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://ww3.sinaimg.cn/large/a40b648ftw1eka5zwjf8pj20is0ax75x.jpg" alt="连接成功的消息" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git config --global user.name "Your Name Here"
+</span><span class='line'># Sets the default name for git to use when you commit
+</span><span class='line'>$ git config --global user.email "your_email@youremail.com"
+</span><span class='line'># Sets the default email for git to use when you commit</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>简易使用参考</h2>
+
+<h3>简单的上传下载方法</h3>
+
+<p>上传一个文件到Github，先需要在Github建立一个repo，然后上传。例如建立“Hello-world”文件并上传到刚建立的repo：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir ~/Hello-World
+</span><span class='line'># Creates a directory for your project called "Hello-World" in your user directory
+</span><span class='line'>cd ~/Hello-World
+</span><span class='line'># Changes the current working directory to your newly created directory
+</span><span class='line'>git init
+</span><span class='line'># Sets up the necessary Git files
+</span><span class='line'># Initialized empty Git repository in /Users/you/Hello-World/.git/
+</span><span class='line'>touch README
+</span><span class='line'># Creates a file called "README" in your Hello-World directory
+</span><span class='line'>$ git add README
+</span><span class='line'># Stages your README file, adding it to the list of files to be committed
+</span><span class='line'>git commit -m 'first commit'
+</span><span class='line'># Commits your files, adding the message "first commit"
+</span><span class='line'>$ git remote add origin https://github.com/username/Hello-World.git
+</span><span class='line'># Creates a remote named "origin" pointing at your GitHub repogit push origin master# Sends your commits in the "master" branch to GitHub</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>创建新仓库</h3>
+
+<p>创建新文件夹，打开，然后执行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git init</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以创建新的 git 仓库。</p>
+
+<h3>检出仓库</h3>
+
+<p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone /path/to/repository</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone username@host:/path/to/repository</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>添加与提交</h3>
+
+<p>你可以计划改动（把它们添加到缓存区），使用如下命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add &lt;filename&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add *</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git commit -m "代码提交信息"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+
+<h3>推送改动</h3>
+
+<p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以把 master 换成你想要推送的任何分支。</p>
+
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote add origin &lt;server&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+
+<h3>分支</h3>
+
+<p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
+
+<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout -b feature_x</span></code></pre></td></tr></table></div></figure>
+
+
+<p>切换回主分支：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>再把新建的分支删掉：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git branch -d feature_x</span></code></pre></td></tr></table></div></figure>
+
+
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git push origin &lt;branch&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>更新与合并</h3>
+
+<p>要更新你的本地仓库至最新改动，执行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git pull</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。</p>
+
+<p>要合并其他分支到你的当前分支（例如 master），执行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git merge &lt;branch&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add &lt;filename&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git diff &lt;source_branch&gt; &lt;target_branch&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>修复一些错误</h3>
+
+<p>How do you get git to always pull from a specific branch?</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git config branch.master.remote origin
+</span><span class='line'>$ git config branch.master.merge refs/heads/master</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-13T00:13:33+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/git/'>Git</a>
+
+
+</div>
+	
+	<div class="comments"><a href="#disqus_thread">Comments</a></div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013 - 2014
+
+    Ri Xu. 
+
+ All rights reserved.</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus-01';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Luxurioust.github.io/blog/2014/09/13/configure-git-and-github.html';
+        var disqus_url = 'http://Luxurioust.github.io/blog/2014/09/13/configure-git-and-github.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//go.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>
