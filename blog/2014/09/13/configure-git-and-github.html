@@ -201,9 +201,9 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ git config --global user.name "Your Name Here"
-</span><span class='line'># Sets the default name for git to use when you commit
+</span><span class='line'># 为Git设定默认提交时的用户名
 </span><span class='line'>$ git config --global user.email "your_email@youremail.com"
-</span><span class='line'># Sets the default email for git to use when you commit</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'># 设定提交时默认的邮箱地址</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>简易使用参考</h2>
@@ -227,21 +227,25 @@
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir ~/Hello-World
-</span><span class='line'># Creates a directory for your project called "Hello-World" in your user directory
+</span><span class='line'># 在用户文件夹下创建一个名为 Hello-World 的文件夹
 </span><span class='line'>cd ~/Hello-World
-</span><span class='line'># Changes the current working directory to your newly created directory
+</span><span class='line'># 改变当前工作目录到新创建的目录
 </span><span class='line'>git init
-</span><span class='line'># Sets up the necessary Git files
-</span><span class='line'># Initialized empty Git repository in /Users/you/Hello-World/.git/
+</span><span class='line'># 设置必要的 Git 文件
+</span><span class='line'># 在 /Users/you/Hello-World/.git/ 目录下初始化空 Git 仓库
 </span><span class='line'>touch README
-</span><span class='line'># Creates a file called "README" in your Hello-World directory
+</span><span class='line'># 在 Hello-World 目录下创建 README 文件
 </span><span class='line'>$ git add README
-</span><span class='line'># Stages your README file, adding it to the list of files to be committed
+</span><span class='line'># 将 README 添加到文件提交列表中
 </span><span class='line'>git commit -m 'first commit'
-</span><span class='line'># Commits your files, adding the message "first commit"
+</span><span class='line'># 提交你的文件，添加消息 "first commit"
 </span><span class='line'>$ git remote add origin https://github.com/username/Hello-World.git
-</span><span class='line'># Creates a remote named "origin" pointing at your GitHub repogit push origin master# Sends your commits in the "master" branch to GitHub</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'># 创建一个远程命名为 "origin" 指向 GitHub 仓库
+</span><span class='line'>push origin master
+</span><span class='line'># 发送提交的 "master" 分支到 GitHub 上</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>创建新仓库</h3>
@@ -366,7 +370,10 @@
 
 <h3>修复一些错误</h3>
 
-<p>How do you get git to always pull from a specific branch?</p>
+<ul>
+<li>How do you get git to always pull from a specific branch?</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -374,7 +381,10 @@
 </span><span class='line'>$ git config branch.master.merge refs/heads/master</span></code></pre></td></tr></table></div></figure>
 
 
-<p>git push命令每次都得输入github帐号和密码</p>
+<ul>
+<li>git push命令每次都得输入github帐号和密码</li>
+</ul>
+
 
 <p>GitHub获得远程库时，有ssh方式和https方式。</p>
 
